@@ -5,9 +5,9 @@ import Home from "./containers/Home";
 function App() {
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
     <Home/>
-    <Footer/>
+    {/* <Footer/> */}
     </>
   );
 }
