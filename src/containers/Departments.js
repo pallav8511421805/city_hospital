@@ -2,6 +2,7 @@ import React from 'react';
 
 function Departments(props) {
     return (
+        
 <main id="main">
   <section id="departments" className="departments">
     <div className="container">
