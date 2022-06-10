@@ -4,14 +4,17 @@ import Departments from "./containers/Departments";
 import Home from "./containers/Home";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
+import Doctors from "./containers/Doctors";
 
 function App() {
   return (
     <>
     <Header/>
     <Switch>
-      <Route/>
-    </Switch>
+      <Route path={"/H"} exact component={Home}/>
+      <Route path={"/d"} exact component={Departments}/>
+      <Route path={"/Doctor"} exact component={Doctors}/>
+      </Switch>
     <Footer/>
     </>
   );
