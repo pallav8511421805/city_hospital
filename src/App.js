@@ -7,8 +7,9 @@ function App() {
   return (
     <>
     <Header/>
-    <Home/>
-    {/* <Departments /> */}
+    <Switch>
+      <Home/>
+    </Switch>
     <Footer/>
     </>
   );
