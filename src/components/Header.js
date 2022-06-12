@@ -31,7 +31,7 @@ function Header(props) {
           <li><NavLink className="nav-link scrollto active" to={"/H"}>Home</NavLink></li>
           <li><NavLink className="nav-link scrollto" to={"/d"}>Departments</NavLink></li>
           <li><NavLink className="nav-link scrollto" to={"/Doctor"}>Doctors</NavLink></li>
-          <li><a className="nav-link scrollto " href="./pages/about.html">About</a></li>
+          <li><NavLink className="nav-link scrollto " to={"/About"}>About</NavLink></li>
           <li><a className="nav-link scrollto" href="./pages/contact.html">Contact</a></li>
         </ul>
         <i className="bi bi-list mobile-nav-toggle" />
