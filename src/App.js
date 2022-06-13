@@ -7,6 +7,7 @@ import { Switch } from "react-router-dom";
 import Doctors from "./containers/Doctors";
 import About from "./containers/About";
 import Contacts from "./containers/Contacts";
+import Login from "./containers/Login";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path={"/Doctor"} exact component={Doctors}/>
       <Route path={"/About"} exact component={About}/>
       <Route path={"/contact"} exact component={Contacts}/>
+      <Route path={"/Login"} exact component={Login}/>
       </Switch>
     <Footer/>
     </>
