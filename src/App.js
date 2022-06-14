@@ -8,6 +8,7 @@ import Doctors from "./containers/Doctors";
 import About from "./containers/About";
 import Contacts from "./containers/Contacts";
 import Login from "./containers/Login";
+import Forgetpassword from "./containers/Forgetpassword";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path={"/About"} exact component={About}/>
       <Route path={"/contact"} exact component={Contacts}/>
       <Route path={"/Login"} exact component={Login}/>
+      <Route path = {"/forgetpassword"} exact component={Forgetpassword}/>
       </Switch>
     <Footer/>
     </>

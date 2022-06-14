@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Login(props) {
     const [usertype,setusertype] = useState("Log in");
@@ -7,7 +8,8 @@ function Login(props) {
   <div className="container">
   <div className="section-title">
       {
-        usertype === "Log in" ? <h2>Log in</h2> : <h2>Sign up</h2>
+        usertype === "Log in" ? <h2>Log in</h2> :
+        <h2>Sign up</h2> 
       }
     </div>
     <div className="row mt-5">
@@ -34,6 +36,12 @@ function Login(props) {
               <input type="password" name="password" className="form-control shadow-none" id="password" placeholder="Your password" required />
             </div>
             </div>
+
+             
+            {
+                usertype === "Log in" ? <div className="text-center my-3">
+                  <NavLink className="text-dark" to={"/forgetpassword"}>Forgot password ?</NavLink></div> : null 
+            }
 
           </>
           {
