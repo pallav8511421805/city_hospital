@@ -12,7 +12,7 @@ import Forgetpassword from "./containers/Forgetpassword";
 
 function App() {
   return (
-    <>
+    < >
     <Header/>
     <Switch>
       <Route path={"/H"} exact component={Home}/>
