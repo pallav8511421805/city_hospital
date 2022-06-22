@@ -4,15 +4,15 @@ import { ErrorMessage, Form, Formik, useFormik} from 'formik';
 
 function Appoiment(props) {
     let schema = yup.object().shape({
+        phone: yup.number().required("Please enter your phone number."),
         name: yup.string().required("Please enter your name."),
-        email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),
-        password: yup.string().required("Please enter your password.")
+        email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id.")
       });;
 
     const formik = useFormik({
       initialValues: {
+        phone:'',
         name:'',
-        password:'',
         email: '',
       },
      validationSchema : schema,  
@@ -34,26 +34,36 @@ function Appoiment(props) {
           Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
       </div>
       <Formik validationSchema>
-      <Form onSubmit={handleSubmit} action method="post" role="form" className="php-email-form">
+      <Form onSubmit={handleSubmit} className="php-email-form">
         <div className="row">
           <div className="col-md-4 form-group">
-            <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+            <input type="text" name="name" className="form-control" id="name" placeholder="Your Name"/>
             <div className="validate" 
             onChange={handleChange} 
             onBlur={handleBlur}
             value={values.name}
             />
-           {errors.name || touched.name ? <p className='text-center'>{errors.name}</p>: ""}
+           {errors.name || touched.name ? <p>{errors.name}</p>: ""}
 
           </div>
           <div className="col-md-4 form-group mt-3 mt-md-0">
-            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-            <div className="validate" />
+            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email"/>
+            <div className="validate" 
+            onChange={handleChange} 
+            onBlur={handleBlur}
+            value={values.email}
+            />
+           {errors.email && touched.email ? <p>{errors.email}</p>: ""}
           </div>
           <div className="col-md-4 form-group mt-3 mt-md-0">
-            <input type="tel" className="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-            <div className="validate" />
+            <input type="tel" className="form-control" name="phone" id="phone" placeholder="Your Phone" maxLength={10}/>
+            <div className="validate" 
+            onChange={handleChange} 
+            onBlur={handleBlur}
+            value={values.phone}
+            />
           </div>
+          {errors.phone && touched.phone ? <p>{errors.phone}</p>: ""}
         </div>
         <div className="row">
           <div className="col-md-4 form-group mt-3">
