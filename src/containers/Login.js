@@ -3,12 +3,13 @@ import { NavLink } from 'react-router-dom';
 
 function Login(props) {
     const [usertype,setusertype] = useState("Log in");
+    const [reset,setreset] = useState(true);
 
     return (
   <div className="container">
   <div className="section-title">
       {
-        usertype === "Log in" ? <h2>Log in</h2> :
+       reset ?<h2>Forget password</h2> : usertype === "Log in" ? <h2>Log in</h2> :
         <h2>Sign up</h2> 
       }
     </div>
