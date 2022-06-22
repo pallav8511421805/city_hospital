@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import * as yup from 'yup';
 
 function Login(props) {
   const [usertype, setusertype] = useState("Log in");
   const [reset, setreset] = useState(false);
+
+  let schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password : yup.string().required()
+  });
 
   return (
     <div className="container">
