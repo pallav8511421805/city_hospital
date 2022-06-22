@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as yup from 'yup';
+import { Form, Formik, useFormik } from 'formik';
 
 function Login(props) {
   const [usertype, setusertype] = useState("Log in");
@@ -10,6 +11,19 @@ function Login(props) {
     password : yup.string().required()
   });
 
+  const SignupForm = () => {
+    const formik = useFormik({
+      initialValues: {
+        firstName: '',
+        lastName: '',
+        email: '',
+      },
+      onSubmit: values => {
+        alert(JSON.stringify(values, null, 2));
+      },
+    })
+  }
+  let[errors,handleSubmit,handleChange,values] = formik;
   return (
     <div className="container">
       <div className="section-title">
@@ -20,7 +34,8 @@ function Login(props) {
       </div>
       <div className="row mt-5">
         <div className="col-lg-12 mt-5 mt-lg-0">
-          <div className="php-email-form">
+          <Formik>
+          <Form onSubmit={handleSubmit} className="php-email-form">
             <>
               {
                 usertype === "Log in" ? null :
@@ -92,7 +107,8 @@ function Login(props) {
                   </span></p>
               }
             </div>
-          </div>
+          </Form>
+          </Formik>
         </div>
       </div>
     </div>
