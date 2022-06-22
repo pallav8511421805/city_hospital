@@ -7,23 +7,37 @@ function Login(props) {
   const [reset, setreset] = useState(false);
       
   let initialVal;
+  let mainschema;
   if(usertype == "Log in"){
     initialVal ={
       password:'',
       email: '',
     }
+    mainschema = yup.object().shape({
+      email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),
+      password: yup.string().required("Please enter your password.")
+    });
   } else if(usertype == "Sign up"){
     initialVal ={
       name: '',
       password:'',
       email: '',
     }
-  }
-
-    let schema = yup.object().shape({
+    mainschema = yup.object().shape({
+      name: yup.string().required("Please enter your name."),
       email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),
       password: yup.string().required("Please enter your password.")
     });
+  } else if (reset == true){
+    initialVal ={
+       email: '',
+    }
+    mainschema = yup.object().shape({
+      email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),
+    });
+  }
+
+    let schema = mainschema;
 
     const formik = useFormik({
       initialValues: initialVal,
@@ -53,19 +67,34 @@ function Login(props) {
                   <>
                     <div className="row justify-content-center">
                       <div className="col-md-6 form-group my-1">
-                        <input type="text" name="name" className="form-control shadow-none" id="name" placeholder="Your Name" />
+                        <input type="text" name="name" className="form-control shadow-none" id="name" placeholder="Your Name"
+                        onChange={handleChange} 
+                        onBlur={handleBlur}
+                        value={values.name}
+                        />
                       </div>
+                      {errors.name || touched.name ?<p className='text-center'>{errors.name}</p>: ""}
                     </div>
                     <div className="row justify-content-center">
                       <div className="col-md-6 form-group my-1">
-                        <input type="email" className="form-control shadow-none" name="email" id="email" placeholder="Your Email" />
+                        <input type="email" className="form-control shadow-none" name="email" id="email" placeholder="Your Email" 
+                        onChange={handleChange} 
+                        onBlur={handleBlur}
+                        value={values.email}
+                        />
                       </div>
+                      {errors.email && touched.email ? <p className='text-center'>{errors.email}</p>: ""}
                     </div>
 
                     <div className="row justify-content-center">
                       <div className="col-md-6 form-group my-1">
-                        <input type="password" name="password" className="form-control shadow-none" id="password" placeholder="Your password"/>
+                        <input type="password" name="password" className="form-control shadow-none" id="password" placeholder="Your password"
+                        onChange={handleChange} 
+                        onBlur={handleBlur}
+                        value={values.password}
+                        />
                       </div>
+                      {errors.password && touched.password ? <p className='text-center'>{errors.password}</p>: ""}
                     </div>
                   </>
               }
@@ -74,9 +103,13 @@ function Login(props) {
                 reset ?
                   <div className="row justify-content-center">
                     <div className="col-md-6 form-group my-1">
-                    
-                      <input type="email" className="form-control shadow-none" name="email" id="email" placeholder="Your Email" required />
+                      <input type="email" className="form-control shadow-none" name="email" id="email" placeholder="Your Email"
+                      onChange={handleChange} 
+                      onBlur={handleBlur}
+                      value={values.password}
+                      />
                     </div>
+                    {errors.email && touched.email ? <p className='text-center'>{errors.email}</p>: ""}
                   </div>
                   :
                   usertype == "Log in" ?
@@ -114,7 +147,7 @@ function Login(props) {
 
             </>
             {
-              reset ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0">Change password</button></div> : usertype === "Log in" ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Log in</button></div> : <div className="text-center my-3"><button className="appointment-btn scrollto border-0">Sign up</button></div>
+              reset ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0">Change password</button></div> : usertype === "Log in" ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Log in</button></div> : <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Sign up</button></div>
             }
             <div className="text-center">
               {
