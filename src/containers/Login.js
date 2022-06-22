@@ -5,22 +5,29 @@ import { ErrorMessage, Form, Formik, useFormik} from 'formik';
 function Login(props) {
   const [usertype, setusertype] = useState("Log in");
   const [reset, setreset] = useState(false);
+      
+  let initialVal;
+  if(usertype == "Log in"){
+    initialVal ={
+      password:'',
+      email: '',
+    }
+  } else if(usertype == "Sign up"){
+    initialVal ={
+      name: '',
+      password:'',
+      email: '',
+    }
+  }
 
-  let schema = yup.object().shape({
-    email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),
-    password: yup.string().required("Please enter your password")
-  });
-  let screma1 =  yup.object().shape({
-    name: yup.string().name("Please enter valid name"),
-    email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),
-    password: yup.string().required("Please enter your password")
-  });
+    let schema = yup.object().shape({
+      email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),
+      password: yup.string().required("Please enter your password.")
+    });
+
     const formik = useFormik({
-      initialValues: {
-        password:'',
-        email: '',
-      },
-      validationSchema : schema,  
+      initialValues: initialVal,
+     validationSchema : schema,  
       onSubmit: values => {
         alert(JSON.stringify(values, null, 2));
       },
