@@ -41,32 +41,30 @@ function Appoiment(props) {
                             <Form onSubmit={handleSubmit} className="php-email-form">
                                 <div className="row">
                                     <div className="col-md-4 form-group">
-                                        <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" />
-                                        <div className="validate"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.name}
-                                        />
+                                        <input type="text" name="name"
+                                             onChange={handleChange}
+                                             onBlur={handleBlur}
+                                             value={values.name}
+                                        className="form-control" id="name" placeholder="Your Name" />
                                         {errors.name || touched.name ? <p className='text-center'>{errors.name}</p> : ""}
                                     </div>
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
-                                        <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" />
-                                        <div className="validate"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.email}
-                                        />
+                                        <input type="email"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.email}
+                                        className="form-control" name="email" id="email" placeholder="Your Email" />
+                                     
                                         {errors.email && touched.email ? <p className='text-center'>{errors.email}</p> : ""}
                                     </div>
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
-                                        <input type="tel" className="form-control" name="phone" id="phone" placeholder="Your Phone" maxLength={10} />
-                                        <div className="validate"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.phone}
-                                        />
-                                        {errors.phone && touched.phone ? <p className='text-center'>{errors.phone}</p> : ""}
-                                    </div>
+                                        <input type="tel"
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          value={values.phone}
+                                        className="form-control" name="phone" id="phone" placeholder="Your Phone" maxLength={10} />
+                                        {errors.phone && touched.phone ? <p className='text-center'>{errors.phone}</p> : ""}                                
+                                </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-4 form-group mt-3">
@@ -101,13 +99,14 @@ function Appoiment(props) {
                                     <div className="error-message" />
                                     <div className="sent-message">Your appointment request has been sent successfully. Thank you!</div>
                                 </div>
-                                <div className="text-center"><button type='submit'>Make an Appointment</button></div>
+                                <div className="text-center">
+                                    <button type='submit'>Make an Appointment</button>
+                                    </div>
                             </Form>
                         </Formik>
                     </div>
                 </section>
             </main>
-
         </>
     );
 }
