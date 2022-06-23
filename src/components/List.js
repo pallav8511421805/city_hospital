@@ -9,6 +9,7 @@ function List({data}) {
               <th className='text-center'>QUANTITY</th>
               <th className='text-center'>PRICE</th>
               <th className='text-center'>EXPIRY</th>
+              <th className='text-center'>TOTAL</th>
             </tr>
             { 
            data.map((d, i) => { 
@@ -18,6 +19,7 @@ function List({data}) {
                  <td className='text-center'>{d.name}</td> 
                  <td className='text-center'>{d.quantity}</td> 
                  <td className='text-center'>{d.price}</td> 
+                 <td className='text-center'>{d.expiry}</td>
                  <td className='text-center'>{d.expiry}</td> 
                </tr> 
              ) 
