@@ -2,6 +2,9 @@ import React from 'react';
 
 function List({data}) {
      let filterdata = data.filter((value,index)=>value.expiry > 2021);
+     const total = filterdata.reduce(
+      (acc, value, index)=>acc+value.price, 
+      0);
      
     return (
         <table width="600px" align="center" cellSpacing="0" cellPadding="0" className='my-4'>
@@ -14,7 +17,9 @@ function List({data}) {
               <th className='text-center'>TOTAL</th>
             </tr>
             { 
-           filterdata.map((d, i) => { 
+            
+           filterdata.map((d, i) => {
+             
              return ( 
                <tr key={i}> 
                  <td className='text-center'>{d.id}</td> 
@@ -22,7 +27,7 @@ function List({data}) {
                  <td className='text-center'>{d.quantity}</td> 
                  <td className='text-center'>{d.price}</td> 
                  <td className='text-center'>{d.expiry}</td>
-                 <td className='text-center'>{d.expiry}</td> 
+                 {i === 2 ? <td className='text-center' colspan="3">{total}</td> : null} 
                </tr> 
              ) 
            }) 
