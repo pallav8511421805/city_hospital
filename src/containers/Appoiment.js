@@ -3,12 +3,12 @@ import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 
 function Appoiment(props) {
-    let schema1 = yup.object().shape({
+    let schema = yup.object().shape({
         department: yup.string().required("Please select your department."),
-        date: yup.date().required("Please enter your appointment date"),
+        date: yup.date().required("Please enter your appointment date."),
         phone: yup.number().required("Please enter your phone number."),
         name: yup.string().required("Please enter your name."),
-        email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id.")
+        email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),        
     });;
 
     const formik = useFormik({
@@ -19,7 +19,7 @@ function Appoiment(props) {
             email: '',
             date: '',
         },
-        validationSchema: schema1,
+        validationSchema: schema,
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         },

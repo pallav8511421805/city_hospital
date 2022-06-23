@@ -106,7 +106,7 @@ function Login(props) {
                       <input type="email" className="form-control shadow-none" name="email" id="email" placeholder="Your Email"
                       onChange={handleChange} 
                       onBlur={handleBlur}
-                      value={values.password}
+                      value={values.email}
                       />
                     </div>
                     {errors.email && touched.email ? <p className='text-center'>{errors.email}</p>: ""}
