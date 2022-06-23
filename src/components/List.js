@@ -1,6 +1,8 @@
 import React from 'react';
 
 function List({data}) {
+     let filterdata = data.filter((value,index)=>value.expiry > 2021);
+     
     return (
         <table width="600px" align="center" cellSpacing="0" cellPadding="0" className='my-4'>
             <tr>
@@ -12,7 +14,7 @@ function List({data}) {
               <th className='text-center'>TOTAL</th>
             </tr>
             { 
-           data.map((d, i) => { 
+           filterdata.map((d, i) => { 
              return ( 
                <tr key={i}> 
                  <td className='text-center'>{d.id}</td> 
