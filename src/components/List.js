@@ -1,47 +1,30 @@
 import React from 'react';
 
 function List({data}) {
-    const orgData = [
-        {
-        id: 101,
-        name: 'Abacavir',
-        quantity: 25,
-        price: 150,
-        expiry: 2022
-        },
-        {
-        id: 102,
-        name: 'Eltrombopag',
-        quantity: 90,
-        price: 550,
-        expiry: 2021
-        },
-        {
-        id: 103,
-        name: 'Meloxicam',
-        quantity: 85,
-        price: 450,
-        expiry: 2025
-        },
-        {
-        id: 104,
-        name: 'Allopurinol',
-        quantity: 50,
-        price: 600,
-        expiry: 2023
-        },
-        {
-        id: 105,
-        name: 'Phenytoin',
-        quantity: 63,
-        price: 250,
-        expiry: 2021
-        }
-        ]
     return (
-        <div>
+        <table width="600px" align="center" cellSpacing="0" cellPadding="0" className='my-4'>
+            <tr>
+              <th className='text-center'>ID</th>
+              <th className='text-center'>NAME</th>
+              <th className='text-center'>QUANTITY</th>
+              <th className='text-center'>PRICE</th>
+              <th className='text-center'>EXPIRY</th>
+            </tr>
+            { 
+           data.map((d, i) => { 
+             return ( 
+               <tr key={i}> 
+                 <td className='text-center'>{d.id}</td> 
+                 <td className='text-center'>{d.name}</td> 
+                 <td className='text-center'>{d.quantity}</td> 
+                 <td className='text-center'>{d.price}</td> 
+                 <td className='text-center'>{d.expiry}</td> 
+               </tr> 
+             ) 
+           }) 
+         } 
             
-        </div>
+        </table>
     );
 }
 
