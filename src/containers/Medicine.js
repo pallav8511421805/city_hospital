@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import List from '../components/List';
 
 function Medicine(props) {
@@ -42,6 +43,7 @@ function Medicine(props) {
     return (
         <div>
             <List data={orgData}/>
+            <NavLink to={"/ref"}>Use ref</NavLink>
         </div>
     );
 }
