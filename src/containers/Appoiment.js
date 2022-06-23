@@ -9,7 +9,7 @@ function Appoiment(props) {
         phone: yup.number().required("Please enter your phone number."),
         name: yup.string().required("Please enter your name."),
         email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),        
-    });;
+    })
 
     const formik = useFormik({
         initialValues: {
