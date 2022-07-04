@@ -1,8 +1,12 @@
 import React from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
+import { NavLink, useHistory } from 'react-router-dom';
 
 function Bookappoment(props) {
+
+    const history = useHistory();
+
     let schema = yup.object().shape({
         department: yup.string().required("Please select your department."),
         date: yup.date().required("Please enter your appointment date."),
@@ -23,6 +27,7 @@ function Bookappoment(props) {
         validationSchema: schema,
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
+            history.push("/lista");
         },
     }
     )
@@ -30,6 +35,18 @@ function Bookappoment(props) {
     return (
         <>
             <main id="main">
+                <section className='my-4'>
+                    <div className='container'>
+                        <div className='row text-center'>
+                            <div className='col-6'>
+                                <NavLink exact to={"/appoiment"} className="appointment-btn scrollto">Book appointment</NavLink>
+                            </div>
+                            <div className='col-6'>
+                                <NavLink exact to={"/lista"} className="appointment-btn scrollto">List appointment</NavLink>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section id="appointment" className="appointment">
                     <div className="container">
                         <div className="section-title">
@@ -89,7 +106,7 @@ function Bookappoment(props) {
                                 <div className="form-group mt-3">
                                     <textarea className="form-control" onChange={handleChange}
                                         onBlur={handleBlur} name="message" rows={5} placeholder="Message" defaultValue={""} />
-                                        {errors.message && touched.message ? <p className='text-center'>{errors.message}</p> : ""}
+                                    {errors.message && touched.message ? <p className='text-center'>{errors.message}</p> : ""}
                                     <div className="validate" />
                                 </div>
                                 <div className="mb-3">

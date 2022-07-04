@@ -8,9 +8,10 @@ import Doctors from "./containers/Doctors";
 import About from "./containers/About";
 import Contacts from "./containers/Contacts";
 import Login from "./containers/Login";
-import Appoiment from "./containers/Appoiment";
 import Medicine from "./containers/Medicine";
 import Ref from "./containers/Ref";
+import Bookappoment from "./containers/appoiment/Bookappoment";
+import Listappoiment from "./containers/appoiment/Listappoiment";
 
 function App() {
   return (
@@ -23,9 +24,10 @@ function App() {
       <Route path={"/About"} exact component={About}/>
       <Route path={"/contact"} exact component={Contacts}/>
       <Route path={"/Login"} exact component={Login}/>
-      <Route path={"/appoiment"} exact component={Appoiment}/>
+      <Route path={"/appoiment"} exact component={Bookappoment}/>
       <Route path={"/Medicine"} exact component={Medicine}/>
       <Route path={"/ref"} exact component={Ref}/>
+      <Route path={"/lista"} exact component={Listappoiment}/>
       </Switch>
     <Footer/>
     </>
