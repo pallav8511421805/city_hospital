@@ -68,7 +68,7 @@ function Appoiment(props) {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-4 form-group mt-3">
-                                        <input type="datetime" name="date" className="form-control datepicker" id="date" placeholder="Appointment Date"
+                                        <input type="date" name="date" className="form-control datepicker" id="date" placeholder="Appointment Date"
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.date} />
@@ -81,7 +81,7 @@ function Appoiment(props) {
                                             onBlur={handleBlur}
                                             value={values.department}
                                         >
-                                            <option value>Select Department</option>
+                                            <option value="">Select Department</option>
                                             <option value="Department 1">Department 1</option>
                                             <option value="Department 2">Department 2</option>
                                             <option value="Department 3">Department 3</option>
