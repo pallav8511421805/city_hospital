@@ -8,9 +8,9 @@ function Appoiment(props) {
         date: yup.date().required("Please enter your appointment date."),
         phone: yup.number().required("Please enter your phone number."),
         name: yup.string().required("Please enter your name."),
-        email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),        
+        email: yup.string().email("Please enter your vaild email id.").required("Please enter your email id."),
+        message: yup.string().required("Please enter your message.")
     })
-
     const formik = useFormik({
         initialValues: {
             department: '',
@@ -18,6 +18,7 @@ function Appoiment(props) {
             name: '',
             email: '',
             date: '',
+            message: ''
         },
         validationSchema: schema,
         onSubmit: values => {
@@ -25,7 +26,7 @@ function Appoiment(props) {
         },
     }
     )
-    let { errors, handleBlur, handleSubmit, handleChange , touched, values} = formik;
+    let { errors, handleBlur, handleSubmit, handleChange, touched, values } = formik;
     return (
         <>
             <main id="main">
@@ -37,41 +38,37 @@ function Appoiment(props) {
                                 blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.
                                 Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
                         </div>
-                        <Formik validationSchema>
+                        <Formik values={formik}>
                             <Form onSubmit={handleSubmit} className="php-email-form">
                                 <div className="row">
                                     <div className="col-md-4 form-group">
                                         <input type="text" name="name"
-                                             onChange={handleChange}
-                                             onBlur={handleBlur}
-                                             value={values.name}
-                                        className="form-control" id="name" placeholder="Your Name" />
-                                        {errors.name || touched.name ? <p className='text-center'>{errors.name}</p> : ""}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className="form-control" id="name" placeholder="Your Name" />
+                                        {errors.name && touched.name ? <p className='text-center'>{errors.name}</p> : ""}
                                     </div>
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
                                         <input type="email"
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.email}
-                                        className="form-control" name="email" id="email" placeholder="Your Email" />
-                                     
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className="form-control" name="email" id="email" placeholder="Your Email" />
+
                                         {errors.email && touched.email ? <p className='text-center'>{errors.email}</p> : ""}
                                     </div>
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
                                         <input type="tel"
-                                          onChange={handleChange}
-                                          onBlur={handleBlur}
-                                          value={values.phone}
-                                        className="form-control" name="phone" id="phone" placeholder="Your Phone" maxLength={10} />
-                                        {errors.phone && touched.phone ? <p className='text-center'>{errors.phone}</p> : ""}                                
-                                </div>
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className="form-control" name="phone" id="phone" placeholder="Your Phone" maxLength={10} />
+                                        {errors.phone && touched.phone ? <p className='text-center'>{errors.phone}</p> : ""}
+                                    </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-4 form-group mt-3">
                                         <input type="date" name="date" className="form-control datepicker" id="date" placeholder="Appointment Date"
                                             onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.date} />
+                                            onBlur={handleBlur} />
                                         <div className="validate" />
                                         {errors.date && touched.date ? <p className='text-center'>{errors.date}</p> : ""}
                                     </div>
@@ -79,7 +76,6 @@ function Appoiment(props) {
                                         <select name="department" id="department" className="form-select"
                                             onChange={handleChange}
                                             onBlur={handleBlur}
-                                            value={values.department}
                                         >
                                             <option value="">Select Department</option>
                                             <option value="Department 1">Department 1</option>
@@ -91,7 +87,8 @@ function Appoiment(props) {
                                     </div>
                                 </div>
                                 <div className="form-group mt-3">
-                                    <textarea className="form-control" name="message" rows={5} placeholder="Message (Optional)" defaultValue={""} />
+                                    <textarea className="form-control" onChange={handleChange}
+                                        onBlur={handleBlur} name="message" rows={5} placeholder="Message" defaultValue={""} />
                                     <div className="validate" />
                                 </div>
                                 <div className="mb-3">
@@ -101,7 +98,7 @@ function Appoiment(props) {
                                 </div>
                                 <div className="text-center">
                                     <button type='submit'>Make an Appointment</button>
-                                    </div>
+                                </div>
                             </Form>
                         </Formik>
                     </div>
