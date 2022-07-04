@@ -89,6 +89,7 @@ function Appoiment(props) {
                                 <div className="form-group mt-3">
                                     <textarea className="form-control" onChange={handleChange}
                                         onBlur={handleBlur} name="message" rows={5} placeholder="Message" defaultValue={""} />
+                                        {errors.message && touched.message ? <p className='text-center'>{errors.message}</p> : ""}
                                     <div className="validate" />
                                 </div>
                                 <div className="mb-3">
