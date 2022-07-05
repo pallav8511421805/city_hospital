@@ -4,7 +4,6 @@ import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Bookappoment(props) {
-    const [data,setdata] = useState([]);
     const history = useHistory();
 
     const handleinsert = (values) =>{
@@ -24,7 +23,6 @@ function Bookappoment(props) {
             booklocaldata.push(data);
             localStorage.setItem("Appointment",JSON.stringify(booklocaldata));
         }
-        setdata(booklocaldata);
         history.push("/lista");
     }
 
