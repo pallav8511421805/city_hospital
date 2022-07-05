@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Bookappoment(props) {
-
+    const [data,setdata] = useState([]);
     const history = useHistory();
+
+    const handleinsert = (values) =>{
+         
+        const id = Math.floor(Math.random()*1000);
+
+        const data = {
+            id:id,
+            ...values
+        }
+
+        let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
+        
+        if(booklocaldata === null){
+            localStorage.setItem("Appointment",JSON.stringify([data]))
+        } else{
+            booklocaldata.push(data);
+            localStorage.setItem("Appointment",JSON.stringify(booklocaldata));
+        }
+        setdata(booklocaldata);
+        history.push("/lista");
+    }
 
     let schema = yup.object().shape({
         department: yup.string().required("Please select your department."),
@@ -26,8 +47,7 @@ function Bookappoment(props) {
         },
         validationSchema: schema,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-            history.push("/lista");
+            handleinsert(values)
         },
     }
     )
