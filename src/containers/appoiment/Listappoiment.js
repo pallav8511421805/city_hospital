@@ -22,7 +22,7 @@ function Listappoiment(props) {
                             <Button color="primary" className='shadow-none mx-2 border-2 border-primary'>
                                 Edit
                             </Button>
-                            <Button color="danger" className='shadow-none mx-2 border-2 border-danger'>
+                            <Button color="danger" id="btn" className='shadow-none mx-2 border-2 border-danger'>
                                 Delete
                             </Button>
                         </CardBody>
