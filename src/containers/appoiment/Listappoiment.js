@@ -6,9 +6,7 @@ function Listappoiment(props) {
     const history = useHistory();
     const getdata = () => {
         let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
-        if(booklocaldata !== null){
-            setdata(booklocaldata)
-        }
+        setdata(booklocaldata)
     }
     const [data, setdata] = useState([])
     useEffect(() => {
