@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Bookappoment(props) {
+    useEffect(()=>{
+        let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
+        let propsid = props.location.state;
+        const edata = booklocaldata.filter((v)=>v.id === propsid.id);
+        formik.setValues(edata[0]);
+    },[])
+
     const history = useHistory();
 
     const handleinsert = (values) =>{
@@ -78,6 +85,7 @@ function Bookappoment(props) {
                                 <div className="row">
                                     <div className="col-md-4 form-group">
                                         <input type="text" name="name"
+                                            value={values.name}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             className="form-control" id="name" placeholder="Your Name" />
@@ -85,6 +93,7 @@ function Bookappoment(props) {
                                     </div>
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
                                         <input type="email"
+                                        value={values.email}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             className="form-control" name="email" id="email" placeholder="Your Email" />
@@ -93,6 +102,7 @@ function Bookappoment(props) {
                                     </div>
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
                                         <input type="tel"
+                                        value={values.phone}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             className="form-control" name="phone" id="phone" placeholder="Your Phone" maxLength={10} />
@@ -102,6 +112,7 @@ function Bookappoment(props) {
                                 <div className="row">
                                     <div className="col-md-4 form-group mt-3">
                                         <input type="date" name="date" className="form-control datepicker" id="date" placeholder="Appointment Date"
+                                            value={values.date}
                                             onChange={handleChange}
                                             onBlur={handleBlur} />
                                         <div className="validate" />
@@ -111,6 +122,7 @@ function Bookappoment(props) {
                                         <select name="department" id="department" className="form-select"
                                             onChange={handleChange}
                                             onBlur={handleBlur}
+                                            value={values.department}
                                         >
                                             <option value="">Select Department</option>
                                             <option value="Department 1">Department 1</option>
@@ -123,7 +135,7 @@ function Bookappoment(props) {
                                 </div>
                                 <div className="form-group mt-3">
                                     <textarea className="form-control" onChange={handleChange}
-                                        onBlur={handleBlur} name="message" rows={5} placeholder="Message" defaultValue={""} />
+                                    value={values.message} onBlur={handleBlur} name="message" rows={5} placeholder="Message" defaultValue={""} />
                                     {errors.message && touched.message ? <p className='text-center'>{errors.message}</p> : ""}
                                     <div className="validate" />
                                 </div>
