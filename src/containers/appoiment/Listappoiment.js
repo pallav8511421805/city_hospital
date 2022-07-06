@@ -4,7 +4,7 @@ import { Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
 
 function Listappoiment(props) {
     const history = useHistory();
-    const getdata = () =>{
+    const getdata = () => {
         let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
         setdata(booklocaldata)
     }
@@ -12,8 +12,11 @@ function Listappoiment(props) {
     useEffect(() => {
         getdata();
     }, [])
-    const editbtn = (id)=>{
-        history.push("/appoiment",{id:id}) 
+    const editbtn = (id) => {
+        history.push("/appoiment", { id: id })
+    }
+    const deletebtn = (delteid) => {
+        console.log(delteid);
     }
     return (
         data.map((d) => {
@@ -27,10 +30,10 @@ function Listappoiment(props) {
                             <CardText>
                                 {d.date}
                             </CardText>
-                            <Button color="primary" onClick={()=>{editbtn(d.id)}} className='shadow-none mx-2 border-2 border-primary'>
+                            <Button color="primary" onClick={() => { editbtn(d.id) }} className='shadow-none mx-2 border-2 border-primary'>
                                 Edit
                             </Button>
-                            <Button color="danger" id="btn" className='shadow-none mx-2 border-2 border-danger'>
+                            <Button color="danger" id="btn" onClick={() => { deletebtn(d.id) }} className='shadow-none mx-2 border-2 border-danger'>
                                 Delete
                             </Button>
                         </CardBody>

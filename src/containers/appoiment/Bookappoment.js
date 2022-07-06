@@ -4,31 +4,31 @@ import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Bookappoment(props) {
-    useEffect(()=>{
+    useEffect(() => {
         let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
         let propsid = props.location.state;
-        const edata = booklocaldata.filter((v)=>v.id === propsid.id);
+        const edata = booklocaldata.filter((v) => v.id === propsid.id);
         formik.setValues(edata[0]);
-    },[])
+    }, [])
 
     const history = useHistory();
 
-    const handleinsert = (values) =>{
-         
-        const id = Math.floor(Math.random()*1000);
+    const handleinsert = (values) => {
+
+        const id = Math.floor(Math.random() * 1000);
 
         const data = {
-            id:id,
+            id: id,
             ...values
         }
 
         let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
-        
-        if(booklocaldata === null){
-            localStorage.setItem("Appointment",JSON.stringify([data]))
-        } else{
+
+        if (booklocaldata === null) {
+            localStorage.setItem("Appointment", JSON.stringify([data]))
+        } else {
             booklocaldata.push(data);
-            localStorage.setItem("Appointment",JSON.stringify(booklocaldata));
+            localStorage.setItem("Appointment", JSON.stringify(booklocaldata));
         }
         history.push("/lista");
     }
@@ -93,7 +93,7 @@ function Bookappoment(props) {
                                     </div>
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
                                         <input type="email"
-                                        value={values.email}
+                                            value={values.email}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             className="form-control" name="email" id="email" placeholder="Your Email" />
@@ -102,7 +102,7 @@ function Bookappoment(props) {
                                     </div>
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
                                         <input type="tel"
-                                        value={values.phone}
+                                            value={values.phone}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             className="form-control" name="phone" id="phone" placeholder="Your Phone" maxLength={10} />
@@ -135,7 +135,7 @@ function Bookappoment(props) {
                                 </div>
                                 <div className="form-group mt-3">
                                     <textarea className="form-control" onChange={handleChange}
-                                    value={values.message} onBlur={handleBlur} name="message" rows={5} placeholder="Message" defaultValue={""} />
+                                        value={values.message} onBlur={handleBlur} name="message" rows={5} placeholder="Message" defaultValue={""} />
                                     {errors.message && touched.message ? <p className='text-center'>{errors.message}</p> : ""}
                                     <div className="validate" />
                                 </div>
