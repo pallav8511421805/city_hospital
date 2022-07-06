@@ -6,7 +6,9 @@ function Listappoiment(props) {
     const history = useHistory();
     const getdata = () => {
         let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
-        setdata(booklocaldata)
+        if(booklocaldata !== null){
+            setdata(booklocaldata)
+        }
     }
     const [data, setdata] = useState([])
     useEffect(() => {
@@ -16,7 +18,10 @@ function Listappoiment(props) {
         history.push("/appoiment", { id: id })
     }
     const deletebtn = (delteid) => {
-        console.log(delteid);
+        let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
+        const deletedata = booklocaldata.filter((v) => v.id !== delteid);
+        localStorage.setItem("Appointment",JSON.stringify(deletedata))
+        getdata();
     }
     return (
         data.map((d) => {
