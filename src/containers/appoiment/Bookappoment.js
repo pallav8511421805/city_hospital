@@ -7,8 +7,10 @@ function Bookappoment(props) {
     useEffect(() => {
         let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
         let propsid = props.location.state;
-        const edata = booklocaldata.filter((v) => v.id === propsid.id);
-        formik.setValues(edata[0]);
+        if(booklocaldata !== null && propsid !== null && propsid !== undefined){
+            const edata = booklocaldata.filter((v) => v.id === propsid.id);
+            formik.setValues(edata[0]);
+        }
     }, [])
 
     const history = useHistory();
