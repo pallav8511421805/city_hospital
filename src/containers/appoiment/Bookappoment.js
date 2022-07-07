@@ -4,34 +4,36 @@ import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Bookappoment(props) {
-    const [update,setupdate]=useState(false);
+    const [updatedata,setupdatedata] = useState(false)
     const history = useHistory();
+    
 
     useEffect(() => {
         let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
         let propsid = props.location.state;
-        if(booklocaldata !== null && propsid !== null && propsid !== undefined){
+        if (booklocaldata !== null && propsid !== null && propsid !== undefined) {
             const edata = booklocaldata.filter((v) => v.id === propsid.id);
             formik.setValues(edata[0]);
         }
         history.replace()
-        setupdate(true)
+        setupdatedata(true)
     }, [])
 
     const handleupdate = (values) => {
-    let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
-    let udata = booklocaldata.map((l)=>{
-        if(l.id === values.id){
-            return values;
-        } else {
-            return l;
-        }
-     })
-     localStorage.setItem("Appointment",JSON.stringify(udata))
-     formik.resetForm()
-     setupdate(false)
-     history.replace()
-     history.push("/lista");
+        let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
+        let udata = booklocaldata.map((l) => {
+            if (l.id === values.id) {
+                return values;
+            } else {
+                return l;
+            }
+        })
+        localStorage.setItem("Appointment", JSON.stringify(udata))
+        
+        formik.resetForm()  
+        history.replace()
+        history.push("/lista");
+        // setupdatedata(false)    
     }
 
     const handleinsert = (values) => {
@@ -73,9 +75,9 @@ function Bookappoment(props) {
         },
         validationSchema: schema,
         onSubmit: values => {
-            if(update === true){
-              handleupdate(values)
-            }else{
+            if (updatedata) {
+                handleupdate(values)
+            } else {
                 handleinsert(values)
             }
         },
@@ -171,7 +173,7 @@ function Bookappoment(props) {
                                 </div>
                                 <div className="text-center">
                                     {
-                                        update?<button type='submit'>Update an Appointment</button>:<button type='submit'>Make an Appointment</button>
+                                        updatedata ? <button type='submit'>Update an Appointment</button> : <button type='submit'>Make an Appointment</button>
                                     }
                                 </div>
                             </Form>
