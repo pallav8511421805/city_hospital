@@ -4,6 +4,9 @@ import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Bookappoment(props) {
+    const [update,setupdate]=useState(false);
+    const history = useHistory();
+
     useEffect(() => {
         let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
         let propsid = props.location.state;
@@ -11,9 +14,25 @@ function Bookappoment(props) {
             const edata = booklocaldata.filter((v) => v.id === propsid.id);
             formik.setValues(edata[0]);
         }
+        history.replace()
+        setupdate(true)
     }, [])
 
-    const history = useHistory();
+    const handleupdate = (values) => {
+    let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
+    let udata = booklocaldata.map((l)=>{
+        if(l.id === values.id){
+            return values;
+        } else {
+            return l;
+        }
+     })
+     localStorage.setItem("Appointment",JSON.stringify(udata))
+     formik.resetForm()
+     setupdate(false)
+     history.replace()
+     history.push("/appoiment");
+    }
 
     const handleinsert = (values) => {
 
@@ -54,7 +73,11 @@ function Bookappoment(props) {
         },
         validationSchema: schema,
         onSubmit: values => {
-            handleinsert(values)
+            if(update === true){
+              handleupdate(values)
+            }else{
+                handleinsert(values)
+            }
         },
     }
     )
@@ -147,7 +170,9 @@ function Bookappoment(props) {
                                     <div className="sent-message">Your appointment request has been sent successfully. Thank you!</div>
                                 </div>
                                 <div className="text-center">
-                                    <button type='submit'>Make an Appointment</button>
+                                    {
+                                        update?<button type='submit'>Update an Appointment</button>:<button type='submit'>Make an Appointment</button>
+                                    }
                                 </div>
                             </Form>
                         </Formik>
