@@ -4,9 +4,9 @@ import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Bookappoment(props) {
-    const [updatedata,setupdatedata] = useState(false)
+    const [updatedata, setupdatedata] = useState(false)
     const history = useHistory();
-    
+
 
     useEffect(() => {
         let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
@@ -14,13 +14,13 @@ function Bookappoment(props) {
         if (booklocaldata !== null && propsid !== null && propsid !== undefined) {
             const edata = booklocaldata.filter((v) => v.id === propsid.id);
             formik.setValues(edata[0]);
+            history.replace()
+            setupdatedata(true)
         }
-        history.replace()
-        setupdatedata(true)
     }, [])
 
     const handleupdate = (values) => {
-        let booklocaldata = JSON.parse(localStorage.getItem("Appointment"));
+        let booklocaldata = JSON.parse(localStorage.getItem('Appointment'))
         let udata = booklocaldata.map((l) => {
             if (l.id === values.id) {
                 return values;
@@ -28,12 +28,11 @@ function Bookappoment(props) {
                 return l;
             }
         })
-        localStorage.setItem("Appointment", JSON.stringify(udata))
-        
-        formik.resetForm()  
-        history.replace()
-        setupdatedata(false)    
-        history.push("/lista");    
+        localStorage.setItem('Appointment', JSON.stringify(udata));
+        history.push('/lista');
+        history.replace();
+        setupdatedata(false);
+        formik.resetForm();
     }
 
     const handleinsert = (values) => {
@@ -173,7 +172,7 @@ function Bookappoment(props) {
                                 </div>
                                 <div className="text-center">
                                     {
-                                        updatedata ? <button type='submit'>Update an Appointment</button>:<button type='submit'>Make an Appointment</button>
+                                        updatedata ? <button type='submit'>Update an Appointment</button> : <button type='submit'>Make an Appointment</button>
                                     }
                                 </div>
                             </Form>
