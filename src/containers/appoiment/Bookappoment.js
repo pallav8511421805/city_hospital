@@ -31,7 +31,7 @@ function Bookappoment(props) {
      formik.resetForm()
      setupdate(false)
      history.replace()
-     history.push("/appoiment");
+     history.push("/lista");
     }
 
     const handleinsert = (values) => {
