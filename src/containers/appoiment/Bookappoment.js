@@ -32,7 +32,7 @@ function Bookappoment(props) {
         
         formik.resetForm()  
         history.replace()
-        setupdatedata(false)   
+        setupdatedata(false)    
         history.push("/lista");    
     }
 
@@ -173,7 +173,7 @@ function Bookappoment(props) {
                                 </div>
                                 <div className="text-center">
                                     {
-                                        updatedata ? <button type='submit'>Update an Appointment</button> : <button type='submit'>Make an Appointment</button>
+                                        updatedata ? <button type='submit'>Update an Appointment</button>:<button type='submit'>Make an Appointment</button>
                                     }
                                 </div>
                             </Form>
