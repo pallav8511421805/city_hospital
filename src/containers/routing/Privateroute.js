@@ -1,15 +1,15 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { Islogin } from './testlogin';
 
 function Privateroute({ component:Component , restricted=true , ...test }) {
-    if(Islogin && restricted){
-        <Route
-        {...test}
-        />    
-    } else{
-        <Component />
-    }
+    return (
+        <Route {...test} 
+        render={props => (
+         Islogin ? <Component  {...props}/>
+         : <Redirect to={"/Login"} />
+        )} />
+    )
 }
 
 export default Privateroute;
