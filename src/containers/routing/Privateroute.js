@@ -1,12 +1,12 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { Islogin } from './testlogin';
+import { isLogin } from './testlogin';
 
-function Privateroute({ component:Component , restricted=true , ...test }) {
+function Privateroute({ component:Component , restricted=true , ...rest }) {
     return (
-        <Route {...test} 
+        <Route {...rest} 
         render={props => (
-         Islogin ? <Component  {...props}/>
+            isLogin ? <Component  {...props}/>
          : <Redirect to={"/Login"} />
         )} />
     )

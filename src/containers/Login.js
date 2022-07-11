@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as yup from 'yup';
-import { ErrorMessage, Form, Formik, useFormik} from 'formik';
+import {Form, Formik, useFormik} from 'formik';
 
 function Login(props) {
   const [usertype, setusertype] = useState("Log in");
@@ -39,14 +39,14 @@ function Login(props) {
 
     let schema = mainschema;
 
-    const islogin = localStorage.setItem('user','123'); 
+    const isLogin = localStorage.setItem('user','123'); 
 
     const formik = useFormik({
       initialValues: initialVal,
      validationSchema : schema,  
       onSubmit: values => {
-        if(usertype === 'Log in'){
-          islogin()
+        if(usertype === "Log in"){
+          isLogin()
         } else{
           alert(JSON.stringify(values, null, 2));
         }

@@ -1,7 +1,7 @@
 
-export const Islogin=() => {
-    localStorage.getItem('user')
-    if(Islogin){
+export const isLogin=() => {
+    localStorage.getItem('user');
+    if(isLogin){
        return true;
     } else{
         return false;

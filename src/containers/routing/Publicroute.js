@@ -1,12 +1,12 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { Islogin } from './testlogin';
+import { isLogin } from './testlogin';
 
-function Publicroute({ component: Component, restricted = true, ...test }) {
+function Publicroute({ component: Component, restricted = true, ...rest }) {
     return (
-        <Route {...test} 
+        <Route {...rest} 
         render={props => (
-         Islogin && restricted === true ? 
+            isLogin && restricted === true ? 
          <Redirect to={"/H"} />
          : <Component  {...props}/>
         )} />
