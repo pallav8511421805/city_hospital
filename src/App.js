@@ -26,10 +26,10 @@ function App() {
       <Publicroute path={"/About"} exact component={About}/>
       <Publicroute path={"/contact"} exact component={Contacts}/>
       <Publicroute path={"/Login"} exact restricted={true} component={Login}/>
-      <Route path={"/appoiment"} exact component={Bookappoment}/>
       <Publicroute path={"/Medicine"} exact component={Medicine}/>
       <Publicroute path={"/ref"} exact component={Ref}/>
-      <Route path={"/lista"} exact component={Listappoiment}/>
+      <Privateroute path={"/appoiment"} exact component={Bookappoment}/>
+      <Privateroute path={"/lista"} exact component={Listappoiment}/>
       </Switch>
     <Footer/>
     </>

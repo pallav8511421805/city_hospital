@@ -4,12 +4,11 @@ import { Islogin } from './testlogin';
 
 function Publicroute({ component: Component, restricted = true, ...test }) {
     return (
-        <Route {...test} render={(props) => {
-            if (Islogin) {
-                return <Redirect to={"/H"} />;
-            }
-            return <Component {...props} />;
-        }} />
+        <Route {...test} 
+        render={props => (
+         Islogin && restricted === true ? <Redirect to={"/H"} />
+         : <Component  {...props}/>
+        )} />
     )
 }
 
