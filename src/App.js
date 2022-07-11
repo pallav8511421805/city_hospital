@@ -12,22 +12,24 @@ import Medicine from "./containers/Medicine";
 import Ref from "./containers/Ref";
 import Bookappoment from "./containers/appoiment/Bookappoment";
 import Listappoiment from "./containers/appoiment/Listappoiment";
+import Privateroute from "./containers/routing/Privateroute";
+import Publicroute from "./containers/routing/Publicroute";
 
 function App() {
   return (
     <>
     <Header/>
     <Switch>
-      <Route path={"/H"} exact component={Home}/>
-      <Route path={"/d"} exact component={Departments}/>
-      <Route path={"/Doctor"} exact component={Doctors}/>
-      <Route path={"/About"} exact component={About}/>
-      <Route path={"/contact"} exact component={Contacts}/>
-      <Route path={"/Login"} exact component={Login}/>
-      <Route path={"/appoiment"} exact component={Bookappoment}/>
-      <Route path={"/Medicine"} exact component={Medicine}/>
-      <Route path={"/ref"} exact component={Ref}/>
-      <Route path={"/lista"} exact component={Listappoiment}/>
+      <Publicroute path={"/H"} exact component={Home}/>
+      <Publicroute path={"/d"} exact component={Departments}/>
+      <Publicroute path={"/Doctor"} exact component={Doctors}/>
+      <Publicroute path={"/About"} exact component={About}/>
+      <Publicroute path={"/contact"} exact component={Contacts}/>
+      <Publicroute path={"/Login"} exact restricted={true} component={Login}/>
+      <Privateroute path={"/appoiment"} exact component={Bookappoment}/>
+      <Publicroute path={"/Medicine"} exact component={Medicine}/>
+      <Publicroute path={"/ref"} exact component={Ref}/>
+      <Privateroute path={"/lista"} exact component={Listappoiment}/>
       </Switch>
     <Footer/>
     </>

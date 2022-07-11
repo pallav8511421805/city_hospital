@@ -43,7 +43,11 @@ function Login(props) {
       initialValues: initialVal,
      validationSchema : schema,  
       onSubmit: values => {
-        alert(JSON.stringify(values, null, 2));
+        if(usertype === 'Log in'){
+          localStorage.setItem('user','123');
+        } else{
+          alert(JSON.stringify(values, null, 2));
+        }
       },
     }
     )
