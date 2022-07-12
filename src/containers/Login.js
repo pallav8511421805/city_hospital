@@ -39,14 +39,16 @@ function Login(props) {
 
     let schema = mainschema;
 
-    const isLogin = localStorage.setItem('user','123'); 
+    const handlelogin = ()=>{
+      localStorage.setItem('user','123');
+    } 
 
     const formik = useFormik({
       initialValues: initialVal,
      validationSchema : schema,  
       onSubmit: values => {
         if(usertype === "Log in"){
-          isLogin()
+          handlelogin();
         } else{
           alert(JSON.stringify(values, null, 2));
         }
