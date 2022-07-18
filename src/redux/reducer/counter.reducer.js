@@ -1,4 +1,3 @@
-import * as actiontype '../actiontype';
 
 const intailval = {
     counter : 0
