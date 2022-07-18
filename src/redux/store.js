@@ -1,4 +1,12 @@
 
 import { createStore } from 'redux';
+import rootreducer from './index';
 
-let store = createStore()
+export const store_data = () => {
+
+    let store = createStore(rootreducer)
+
+    return store;
+}
+
+export default store_data;
