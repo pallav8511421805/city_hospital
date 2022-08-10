@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import ThemeContext from '../context/Themecontext';
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 
 function Header(props) {
   
@@ -43,7 +45,9 @@ function Header(props) {
       <NavLink exact to={"/appoiment"} className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
         Appointment</NavLink>
         <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink>
-        <button onClick={()=>Themedata.Toogle_Theme(Themedata.theme)}>Change Theme</button>
+        <button onClick={()=>Themedata.Toogle_Theme(Themedata.theme)}>{
+        Themedata.theme === 'light' ? <LightModeOutlinedIcon/> : <DarkModeOutlinedIcon/>
+        }</button>
     </div>
   </header>
 </div>
