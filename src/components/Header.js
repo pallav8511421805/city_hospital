@@ -5,7 +5,6 @@ import ThemeContext from '../context/Themecontext';
 function Header(props) {
   
   const themedata = useContext(ThemeContext);
-  console.log(themedata)
 
     return (
 <div className={`main-header${themedata.theme}`}>
