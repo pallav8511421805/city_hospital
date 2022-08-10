@@ -6,7 +6,7 @@ const initval = {
 }
 export const ThemeContext = createContext();
 
-function Themeprovider({ children }) {
+export const Themeprovider = ({ children }) => {
 
     const [state, dispatch] = useReducer(Themereducer, initval);
 

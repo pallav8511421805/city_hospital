@@ -14,10 +14,12 @@ import Bookappoment from "./containers/appoiment/Bookappoment";
 import Listappoiment from "./containers/appoiment/Listappoiment";
 import Privateroute from "./containers/routing/Privateroute";
 import Publicroute from "./containers/routing/Publicroute";
+import { Themeprovider } from "./context/Themecontext";
 
 function App() {
   return (
     <>
+    <Themeprovider>
     <Header/>
     <Switch>
       <Publicroute path={"/H"} exact component={Home}/>
@@ -32,6 +34,7 @@ function App() {
       <Privateroute path={"/lista"} exact component={Listappoiment}/>
       </Switch>
     <Footer/>
+    </Themeprovider>
     </>
   );
 }
