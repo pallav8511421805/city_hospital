@@ -4,3 +4,4 @@ import { Themereducer } from './reducer/Theme.reducer';
 const initval ={
     theme : 'light'
 } 
+export const ThemeContext = createContext();
