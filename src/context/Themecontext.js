@@ -1,0 +1,3 @@
+const initval ={
+    theme : 'light'
+}
