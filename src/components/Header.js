@@ -24,7 +24,7 @@ function Header(props) {
       </div>
     </div>
   </div>
-  <header id="header" className="fixed-top">
+  <header id="header" className='fixed-top'>
     <div className="container d-flex align-items-center">
       <div className="logo">
         <a href="index.html">
