@@ -1,7 +1,7 @@
 import React from 'react';
 import { Themetoggle } from '../Actiontypes';
 
-export const Themereducer = (state = initval,action)=>{
+export const Themereducer = (state,action)=>{
         switch(action.type){
           case Themetoggle: 
           return {
