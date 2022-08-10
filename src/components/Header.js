@@ -3,9 +3,12 @@ import { NavLink } from 'react-router-dom';
 import ThemeContext from '../context/Themecontext';
 
 function Header(props) {
-  const themedata = useContext(ThemeContext)
+  
+  const themedata = useContext(ThemeContext);
+  console.log(themedata)
+
     return (
-<div className="main-header">
+<div className={`main-header${themedata.theme}`}>
   <div id="topbar" className="d-flex align-items-center fixed-top">
     <div className="container d-flex justify-content-between">
       <div className="contact-info d-flex align-items-center">
@@ -41,6 +44,7 @@ function Header(props) {
       <NavLink exact to={"/appoiment"} className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
         Appointment</NavLink>
         <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink>
+        <button onClick={()=>{themedata.Toogle_Theme(themedata.theme)}}>Change Theme</button>
     </div>
   </header>
 </div>
