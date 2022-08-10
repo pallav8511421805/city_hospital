@@ -13,7 +13,7 @@ function Header(props) {
   <div id="topbar" className={`d-flex align-items-center fixed-top ${Themedata.theme}`}>
     <div className="container d-flex justify-content-between">
       <div className="contact-info d-flex align-items-center">
-        <i className="bi bi-envelope" /> <a href="mailto:contact@example.com">cityhospital@example.com</a>
+        <i className="bi bi-envelope" /> <a href='mailto:contact@example.com'>cityhospital@example.com</a>
         <i className="bi bi-phone" /> +91 9988776655
       </div>
       <div className="d-none d-lg-flex social-links align-items-center">
