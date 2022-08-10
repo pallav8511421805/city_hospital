@@ -4,11 +4,11 @@ import ThemeContext from '../context/Themecontext';
 
 function Header(props) {
   
-  const themedata = useContext(ThemeContext);
+  const Themedata = useContext(ThemeContext);
 
     return (
-<div className={`main-header${themedata.theme}`}>
-  <div id="topbar" className="d-flex align-items-center fixed-top">
+<div className='main-header'>
+  <div id="topbar" className={`d-flex align-items-center fixed-top ${Themedata.theme}`}>
     <div className="container d-flex justify-content-between">
       <div className="contact-info d-flex align-items-center">
         <i className="bi bi-envelope" /> <a href="mailto:contact@example.com">cityhospital@example.com</a>
@@ -43,7 +43,7 @@ function Header(props) {
       <NavLink exact to={"/appoiment"} className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
         Appointment</NavLink>
         <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink>
-        <button onClick={()=>{themedata.Toogle_Theme(themedata.theme)}}>Change Theme</button>
+        <button onClick={()=>Themedata.Toogle_Theme(Themedata.theme)}>Change Theme</button>
     </div>
   </header>
 </div>
