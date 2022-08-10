@@ -8,5 +8,7 @@ export const Themereducer = (state = initval,action)=>{
             ...state,
             theme : action.payload
           }
+          default :
+          return state;
         }
 }
