@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import * as yup from 'yup';
 import {Form, Formik, useFormik} from 'formik';
+import { useDispatch } from 'react-redux';
+import * as ActionTypes from '../redux/actiontypes';
 
 function Login(props) {
   const [usertype, setusertype] = useState("Log in");
   const [reset, setreset] = useState(false);
+  const dispatch = useDispatch();
       
   let initialVal;
   let mainschema;
@@ -39,8 +42,9 @@ function Login(props) {
 
     let schema = mainschema;
 
-    const handlelogin = ()=>{
-      localStorage.setItem('user','123');
+    const handlelogin = (values)=>{
+      // localStorage.setItem('user','123');
+      dispatch({type:ActionTypes.signup,payload:values})
     } 
 
     const formik = useFormik({
@@ -48,7 +52,7 @@ function Login(props) {
      validationSchema : schema,  
       onSubmit: values => {
         if(usertype === "Log in"){
-          handlelogin();
+          handlelogin(values);
         } else{
           alert(JSON.stringify(values, null, 2));
         }
