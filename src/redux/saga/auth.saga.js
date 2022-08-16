@@ -1,7 +1,6 @@
 import { call, put, takeEvery, all } from 'redux-saga/effects'
 import * as ActionTypes from '../actiontypes';
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* signUp(action) {
    try {
       const user = yield call(Api.fetchUser, action.payload.userId);
