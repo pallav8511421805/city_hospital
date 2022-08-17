@@ -43,8 +43,7 @@ function Login(props) {
     let schema = mainschema;
 
     const handlelogin = (values)=>{
-      // localStorage.setItem('user','123');
-      dispatch(signupaction(values))
+      localStorage.setItem('user','123');
     } 
 
     const formik = useFormik({
@@ -54,7 +53,8 @@ function Login(props) {
         if(usertype === "Log in"){
           handlelogin(values);
         } else{
-          alert(JSON.stringify(values, null, 2));
+          // alert(JSON.stringify(values, null, 2));
+          dispatch(signupaction(values))
         }
       },
     }

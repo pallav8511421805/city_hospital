@@ -15,10 +15,13 @@ import Listappoiment from "./containers/appoiment/Listappoiment";
 import Privateroute from "./containers/routing/Privateroute";
 import Publicroute from "./containers/routing/Publicroute";
 import { Themeprovider } from "./context/Themecontext";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 function App() {
   return (
     <>
+    <Provider store={store}>
     <Themeprovider>
     <Header/>
     <Switch>
@@ -35,6 +38,7 @@ function App() {
       </Switch>
     <Footer/>
     </Themeprovider>
+    </Provider>
     </>
   );
 }
