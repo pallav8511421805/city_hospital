@@ -1,14 +1,14 @@
-import { call, put, takeEvery, all } from 'redux-saga/effects'
+import { call, takeEvery, all } from 'redux-saga/effects'
 import { signUpapi } from '../../comman/apis/auth.api';
 import * as ActionTypes from '../actiontypes';
 
 function* signUp(action) {
-   try {
-      const user = yield call(signUpapi, action.payload);
+  try {
+    const user = yield call(signUpapi, action.payload);
     //   yield put({type: "USER_FETCH_SUCCEEDED", user: user});
-   } catch (e) {
+  } catch (e) {
     //   yield put({type: "USER_FETCH_FAILED", message: e.message});
-   }
+  }
 }
 
 function* WatchSignUp() {
@@ -16,7 +16,7 @@ function* WatchSignUp() {
 }
 
 export default function* authSaga() {
-    yield all([
-      WatchSignUp()
-    ])
-  }
+  yield all([
+    WatchSignUp()
+  ])
+}
