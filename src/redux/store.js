@@ -7,7 +7,7 @@ import rootSaga from './saga/Rootsaga'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const Middlewares = [sagaMiddleware, thunk]
+const Middlewares = [sagaMiddleware, thunk];
 export const store = createStore(
     Rootreducer,
     applyMiddleware(...Middlewares)
