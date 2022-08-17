@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as yup from 'yup';
 import {Form, Formik, useFormik} from 'formik';
 import { useDispatch } from 'react-redux';
-import { signupaction } from '../redux/reducers/actions/signup.action';
+import { signupaction } from '../redux/actions/signup.action';
 
 function Login(props) {
   const [usertype, setusertype] = useState("Log in");
