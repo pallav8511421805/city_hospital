@@ -1,3 +1,5 @@
+import * as ActionTypes from '../../actiontypes';
+
 export const signupaction = (values) => (dispatch) =>{
-dispatch({type:ActionTypes.signup,payload:values});
+dispatch({type:ActionTypes.SIGN_UP,payload:values});
 } 
