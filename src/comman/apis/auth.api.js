@@ -17,19 +17,19 @@ export const signUpapi = (values) => {
       .then((user) => {
         onAuthStateChanged(auth, (user) => {
           if (user.emailVerified) {
-            console.log('successfully');
+            resolve({ payload: 'successfully' });
           } else {
-            console.log('Please check your email');
+            resolve({ payload: 'Please check your email' });
           }
         });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        if (errorCode.localeCompare() === 0) {
-          console.log("Email id already registered.");
+        if (errorCode.localeCompare('auth/email-already-in-use') === 0) {
+          reject({ payload: "Email id already registered." });
         } else {
-          console.log('Errorcode : ', errorCode);
+          reject({ payload: 'Errorcode : ' + errorCode });
         }
       });
   })
