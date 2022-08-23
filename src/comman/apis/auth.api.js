@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../Firebase";
 
 export const signUpapi = (values) => {
@@ -7,15 +7,25 @@ export const signUpapi = (values) => {
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
-        // Signed in 
         const user = userCredential.user;
-        console.log("User : ", user);
-        // ...
+        console.log(user);
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+          } else {
+          }
+        });
+      })
+      .then((user) => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+          } else {
+          }
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+
         console.log("ErrorMessage : ", errorMessage);
         console.log("ErrorCode : ", errorCode);
       });
