@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification } from "firebase/auth";
 import { auth } from "../../Firebase";
 
 export const signUpapi = (values) => {
@@ -8,26 +8,29 @@ export const signUpapi = (values) => {
     createUserWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
         onAuthStateChanged(auth, (user) => {
           if (user) {
-          } else {
+            sendEmailVerification(user)
           }
         });
       })
       .then((user) => {
         onAuthStateChanged(auth, (user) => {
-          if (user) {
+          if (user.emailVerified) {
+            console.log('successfully');
           } else {
+            console.log('Please check your email');
           }
         });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-
-        console.log("ErrorMessage : ", errorMessage);
-        console.log("ErrorCode : ", errorCode);
+        if (errorCode.localeCompare() === 0) {
+          console.log("Email id already registered.");
+        } else {
+          console.log('Errorcode : ', errorCode);
+        }
       });
   })
 }
