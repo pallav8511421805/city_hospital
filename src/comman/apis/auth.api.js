@@ -2,7 +2,6 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerificati
 import { auth } from "../../Firebase";
 
 export const signUpapi = (values) => {
-  console.log('signUpapi :=', values);
 
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, values.email, values.password)
