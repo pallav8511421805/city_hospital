@@ -10,15 +10,13 @@ export const signUpapi = (values) => {
         onAuthStateChanged(auth, (user) => {
           if (user) {
             sendEmailVerification(user)
-          }
-        });
-      })
-      .then((user) => {
-        onAuthStateChanged(auth, (user) => {
-          if (user.emailVerified) {
-            resolve({ payload: 'successfully' });
-          } else {
-            resolve({ payload: 'Please check your email' });
+            .then((user)=>{
+              if (user.emailVerified) {
+                resolve({ payload: 'successfully' });
+              } else {
+                resolve({ payload: 'Please check your email' });
+              }
+            })
           }
         });
       })
