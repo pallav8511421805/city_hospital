@@ -51,7 +51,7 @@ function Login(props) {
      validationSchema : schema,  
       onSubmit: values => {
         if(usertype === "Log in"){
-          handlelogin(values);
+          // handlelogin(values);
           dispatch(signinaction(values))
         } else{
           // alert(JSON.stringify(values, null, 2));
