@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase";
 
 export const signUpapi = (values) => {
@@ -34,10 +34,18 @@ export const signUpapi = (values) => {
   })
 }
 
-export const signInapi = (values) =>{
-console.log('signInapi',values);
+export const signInapi = (values) => {
+  console.log('signInapi', values);
 
-return Promise ((resolve,reject)=>{
-  
-})
+  return Promise((resolve, reject) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  })
 }
