@@ -36,4 +36,8 @@ export const signUpapi = (values) => {
 
 export const signInapi = (values) =>{
 console.log('signInapi',values);
+
+return Promise ((resolve,reject)=>{
+  
+})
 }
