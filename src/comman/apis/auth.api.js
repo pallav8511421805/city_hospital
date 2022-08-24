@@ -35,17 +35,27 @@ export const signUpapi = (values) => {
 }
 
 export const signInapi = (values) => {
-  console.log('signInapi', values);
 
-  return Promise((resolve, reject) => {
-    signInWithEmailAndPassword(auth, email, password)
+  return new Promise((resolve, reject) => {
+    signInWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
         const user = userCredential.user;
+        if (user.emailVerified) {
+          resolve({ payload: "Login successfully" })
+        } else {
+          reject({ payload: "Login error" })
+        }
 
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        if (errorCode.localeCompare('auth/wrong-password') === 0) {
+          reject({ payload: "Wrong email or password" });
+        } else {
+          reject({ payload: 'Errorcode : ' + errorCode });
+        }
+
       });
   })
 }
