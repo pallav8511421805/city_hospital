@@ -43,7 +43,7 @@ export const signInapi = (values) => {
         if (user.emailVerified) {
           resolve({ payload: "Login successfully" })
         } else {
-          reject({ payload: "Login error" })
+          reject({ payload: "Error" })
         }
 
       })
