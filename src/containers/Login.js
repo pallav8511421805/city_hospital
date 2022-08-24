@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as yup from 'yup';
 import {Form, Formik, useFormik} from 'formik';
 import { useDispatch } from 'react-redux';
-import { signupaction } from '../redux/actions/signup.action';
+import { signinaction, signupaction } from '../redux/actions/signup.action';
 
 function Login(props) {
   const [usertype, setusertype] = useState("Log in");
@@ -52,6 +52,7 @@ function Login(props) {
       onSubmit: values => {
         if(usertype === "Log in"){
           handlelogin(values);
+          dispatch(signinaction(values))
         } else{
           // alert(JSON.stringify(values, null, 2));
           dispatch(signupaction(values))
