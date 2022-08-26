@@ -1,5 +1,6 @@
 import { call, takeEvery, all, put } from 'redux-saga/effects'
 import { signInapi, signUpapi } from '../../comman/apis/auth.api';
+import { setalertaction } from '../actions/alert.action';
 import * as ActionTypes from '../actiontypes';
 
 function* signUp(action) {
@@ -15,9 +16,9 @@ function* signUp(action) {
 function* signIn(action) {
   try {
     const user = yield call(signInapi, action.payload);
-    yield put({ text: user.payload, color: 'success' });
+    yield put(setalertaction({ text: user.payload, color: 'success' }));
   } catch (e) {
-    yield put({ text: e.payload, color: 'error' });
+    yield put(setalertaction({ text: e.payload, color: 'error' }));
   }
 }
 
