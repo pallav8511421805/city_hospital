@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import ThemeContext from '../context/Themecontext';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import Alert from './alert/Alert';
 
 function Header(props) {
   
@@ -48,6 +49,7 @@ function Header(props) {
         <button className='Theme_btn' onClick={()=>Themedata.Toogle_Theme(Themedata.theme)}>{
         Themedata.theme === 'light' ? <LightModeOutlinedIcon/> : <DarkModeOutlinedIcon/>
         }</button>
+        <Alert/>
     </div>
   </header>
 </div>
