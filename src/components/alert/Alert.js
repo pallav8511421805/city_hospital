@@ -1,11 +1,25 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack'
+import { resetalertaction } from '../../redux/actions/alert.action';
 
 function Alert(props) {
     const { enqueueSnackbar, closeSnackbar } = useSnackbar()
     let alertdata = useSelector(state => state.alert);
-    console.log(alertdata);
+    let dispatch = useDispatch();
+
+    useEffect(() => {
+        if (alertdata.text !== '') {
+            enqueueSnackbar(alertdata.text, {
+                variant: alertdata.color,
+                anchorOrigin: {
+                    vertical: 'top',
+                    horizontal: 'right'
+                }
+            });
+            setTimeout(() => { dispatch(resetalertaction) }, 2000)
+        }
+    }, [alertdata.text])
     return (
         <div>
 
