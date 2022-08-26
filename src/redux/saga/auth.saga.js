@@ -15,9 +15,9 @@ function* signUp(action) {
 function* signIn(action) {
   try {
     const user = yield call(signInapi, action.payload);
-    yield put({ text: user.payload, color: 'green' });
+    yield put({ text: user.payload, color: 'success' });
   } catch (e) {
-    yield put({ text: e.payload, color: 'red' });
+    yield put({ text: e.payload, color: 'error' });
   }
 }
 
