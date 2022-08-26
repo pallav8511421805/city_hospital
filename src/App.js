@@ -17,10 +17,12 @@ import Publicroute from "./containers/routing/Publicroute";
 import { Themeprovider } from "./context/Themecontext";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { SnackbarProvider } from 'notistack';
 
 function App() {
   return (
     <>
+    <SnackbarProvider maxSnack={3}>
     <Provider store={store}>
     <Themeprovider>
     <Header/>
@@ -39,6 +41,7 @@ function App() {
     <Footer/>
     </Themeprovider>
     </Provider>
+    </SnackbarProvider>
     </>
   );
 }
