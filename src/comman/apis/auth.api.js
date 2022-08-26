@@ -16,9 +16,9 @@ export const signUpapi = (values) => {
       .then((user) => {
         onAuthStateChanged(auth, (user) => {
           if (user.emailVerified) {
-            resolve({ payload: 'successfully' });
+            resolve({ payload: 'successfully.' });
           } else {
-            resolve({ payload: 'Please check your email' });
+            resolve({ payload: 'Please check your email.' });
           }
         });
       })
@@ -41,9 +41,9 @@ export const signInapi = (values) => {
       .then((userCredential) => {
         const user = userCredential.user;
         if (user.emailVerified) {
-          resolve({ payload: "Login successfully" })
+          resolve({ payload: "Login successfully." })
         } else {
-          reject({ payload: "Error" })
+          reject({ payload: "Please verify your email." })
         }
 
       })
@@ -51,7 +51,7 @@ export const signInapi = (values) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         if (errorCode.localeCompare('auth/wrong-password') === 0) {
-          reject({ payload: "Wrong email or password" });
+          reject({ payload: "Wrong email or password." });
         } else {
           reject({ payload: 'Errorcode : ' + errorCode });
         }
