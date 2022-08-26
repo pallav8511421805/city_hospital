@@ -6,7 +6,7 @@ function Alert(props) {
     console.log(alert);
     return (
         <div>
-            
+
         </div>
     );
 }
