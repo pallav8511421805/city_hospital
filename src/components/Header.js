@@ -46,7 +46,7 @@ function Header(props) {
             Appointment</NavLink>
 
           {
-            auth_user === null ? <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink> : <NavLink className="d-none d-md-inline appointment-btn scrollto">Log out</NavLink>
+            auth_user.user === null ? <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink> : <NavLink className="d-none d-md-inline appointment-btn scrollto">Log out</NavLink>
           }
           <button className='Theme_btn' onClick={() => Themedata.Toogle_Theme(Themedata.theme)}>{
             Themedata.theme === 'light' ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />
