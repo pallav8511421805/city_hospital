@@ -41,7 +41,7 @@ export const signInapi = (values) => {
       .then((userCredential) => {
         const user = userCredential.user;
         if (user.emailVerified) {
-          resolve({ payload: "Login successfully." })
+          resolve({ payload: user })
         } else {
           reject({ payload: "Please verify your email." })
         }
