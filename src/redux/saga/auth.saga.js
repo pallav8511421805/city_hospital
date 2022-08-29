@@ -1,5 +1,6 @@
 import { call, takeEvery, all, put } from 'redux-saga/effects'
 import { signInapi, signUpapi } from '../../comman/apis/auth.api';
+import { historydata } from '../../History/history';
 import { setalertaction } from '../actions/alert.action';
 import { signedinaction } from '../actions/signup.action';
 import * as ActionTypes from '../actiontypes';
@@ -16,6 +17,7 @@ function* signIn(action) {
   try {
     const user = yield call(signInapi, action.payload);
     yield put(signedinaction({ user: user }))
+    historydata.push('/H');
     yield put(setalertaction({ text: "Login successfully.", color: 'success' }));
   } catch (e) {
     yield put(setalertaction({ text: e.payload, color: 'error' }));
