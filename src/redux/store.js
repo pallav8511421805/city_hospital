@@ -13,7 +13,7 @@ const persistConfig = {
     whitelist: ['auth']
 }
 const persistedReducer = persistReducer(persistConfig, Rootreducer)
-export let persistor = persistStore(store)
+
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -23,5 +23,6 @@ export const store = createStore(
     applyMiddleware(...Middlewares)
 )
 sagaMiddleware.run(rootSaga)
+export let persistor = persistStore(store)
 
 const action = type => store.dispatch({ type })
