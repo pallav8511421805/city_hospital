@@ -17,8 +17,8 @@ function* signIn(action) {
   try {
     const user = yield call(signInapi, action.payload);
     yield put(signedinaction({ user: user }))
-    historydata.push('/H');
     yield put(setalertaction({ text: "Login successfully.", color: 'success' }));
+    historydata.push('/H');
   } catch (e) {
     yield put(setalertaction({ text: e.payload, color: 'error' }));
   }
