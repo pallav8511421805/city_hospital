@@ -6,6 +6,7 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import Alert from './alert/Alert';
 import { useSelector } from 'react-redux';
 function Header(props) {
+  const auth = useSelector(state => state.auth);
   const Themedata = useContext(ThemeContext);
   return (
     <div className='main-header'>
@@ -43,7 +44,9 @@ function Header(props) {
           </nav>
           <NavLink exact to={"/appoiment"} className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
             Appointment</NavLink>
-          <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink>
+          {
+            auth.user === null ? <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink> : <button className="d-none d-md-inline appointment-btn scrollto">Log out</button>
+          }
           <button className='Theme_btn' onClick={() => Themedata.Toogle_Theme(Themedata.theme)}>{
             Themedata.theme === 'light' ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />
           }</button>
