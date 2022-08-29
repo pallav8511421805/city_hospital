@@ -45,7 +45,7 @@ function Header(props) {
           <NavLink exact to={"/appoiment"} className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
             Appointment</NavLink>
           {
-            auth.user === null ? <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink> : <button className="d-none d-md-inline appointment-btn scrollto">Log out</button>
+            auth.user === null ? <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink> : <button className="d-none d-md-inline appointment-btn scrollto" style={{ border: 'none' }}>Log out</button>
           }
           <button className='Theme_btn' onClick={() => Themedata.Toogle_Theme(Themedata.theme)}>{
             Themedata.theme === 'light' ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />
