@@ -7,7 +7,6 @@ import Alert from './alert/Alert';
 import { useSelector } from 'react-redux';
 function Header(props) {
   const Themedata = useContext(ThemeContext);
-  const auth_user = useSelector(state => state.auth);
   return (
     <div className='main-header'>
       <div id="topbar" className={`d-flex align-items-center fixed-top ${Themedata.theme}`}>
@@ -44,10 +43,7 @@ function Header(props) {
           </nav>
           <NavLink exact to={"/appoiment"} className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
             Appointment</NavLink>
-
-          {
-            auth_user.user === null ? <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink> : <NavLink className="d-none d-md-inline appointment-btn scrollto">Log out</NavLink>
-          }
+          <NavLink className="d-none d-md-inline appointment-btn scrollto" to={"/Login"}>Login/ Signup</NavLink>
           <button className='Theme_btn' onClick={() => Themedata.Toogle_Theme(Themedata.theme)}>{
             Themedata.theme === 'light' ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />
           }</button>
