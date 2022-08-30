@@ -16,10 +16,21 @@ function* signUp(action) {
 function* signIn(action) {
   try {
     const user = yield call(signInapi, action.payload);
-    yield put(signedinaction({ user: user }));
+    yield put(signedinaction());
     yield put(
       setalertaction({ text: "Login successfully.", color: "success" })
     );
+    historydata.push("/H");
+  } catch (e) {
+    yield put(setalertaction({ text: e.payload, color: "error" }));
+  }
+}
+
+function* signout() {
+  try {
+    const user = yield call(signoutapi);
+    yield put(Logoutaction());
+    yield put(setalertaction({ text: user.payload, color: "success" }));
     historydata.push("/H");
   } catch (e) {
     yield put(setalertaction({ text: e.payload, color: "error" }));
@@ -32,6 +43,10 @@ function* WatchSignUp() {
 function* WatchSignin() {
   yield takeEvery(ActionTypes.SIGN_IN, signIn);
 }
+
+function* WatchSignout() {
+  yield takeEvery(ActionTypes.LOGOUT, signout);
+}
 export default function* authSaga() {
-  yield all([WatchSignUp(), WatchSignin()]);
+  yield all([WatchSignUp(), WatchSignin(), WatchSignout()]);
 }

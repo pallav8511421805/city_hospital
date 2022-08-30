@@ -61,3 +61,15 @@ export const signInapi = (values) => {
       });
   });
 };
+
+export const signoutapi = () => {
+  return new Promise((resolve, reject) => {
+    signOut(auth)
+      .then(() => {
+        resolve({ payload: "Log out successfully." });
+      })
+      .catch((error) => {
+        reject({ payload: "Errorcode : " + error.code });
+      });
+  });
+};

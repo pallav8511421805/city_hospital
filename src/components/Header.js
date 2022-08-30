@@ -94,6 +94,7 @@ function Header(props) {
             <button
               className="d-none d-md-inline appointment-btn scrollto"
               style={{ border: "none" }}
+              onClick={dispatch(Logoutaction())}
             >
               Log out
             </button>
