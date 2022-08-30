@@ -1,13 +1,13 @@
-import * as ActionTypes from '../actiontypes';
+import * as ActionTypes from "../actiontypes";
 
 export const signupaction = (values) => (dispatch) => {
-    dispatch({ type: ActionTypes.SIGN_UP, payload: values });
-}
+  dispatch({ type: ActionTypes.SIGN_UP, payload: values });
+};
 
 export const signinaction = (values) => (dispatch) => {
-    dispatch({ type: ActionTypes.SIGN_IN, payload: values });
-} 
+  dispatch({ type: ActionTypes.SIGN_IN, payload: values });
+};
 
 export const signedinaction = (values) => (dispatch) => {
-    dispatch({ type: ActionTypes.SIGNED_IN, payload: values });
-} 
+  dispatch({ type: ActionTypes.SIGNED_IN, payload: values });
+};
