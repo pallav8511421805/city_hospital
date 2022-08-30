@@ -29,9 +29,10 @@ function* signIn(action) {
 function* signout() {
   try {
     const user = yield call(signoutapi);
+    console.log(user.payload);
     yield put(Logoutaction());
     yield put(setalertaction({ text: user.payload, color: "success" }));
-    historydata.push("/H");
+    historydata.push("/Login");
   } catch (e) {
     yield put(setalertaction({ text: e.payload, color: "error" }));
   }
