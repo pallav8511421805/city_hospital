@@ -100,7 +100,7 @@ export const Forgetpasswordapi = () =>{
   return new Promise ((resolve,reject)=>{
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        resolve({payload: 'Please check your email and click on link for reset password.'})
+        resolve({payload: 'Please check your email.'})
       })
       .catch((error) => {
         const errorCode = error.code;
