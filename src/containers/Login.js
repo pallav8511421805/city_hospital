@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as yup from 'yup';
 import {Form, Formik, useFormik} from 'formik';
 import { useDispatch } from 'react-redux';
-import { signinaction, signingoogle, signupaction } from '../redux/actions/signup.action';
+import { Forgetpassword, signinaction, signingoogle, signupaction } from '../redux/actions/signup.action';
 
 function Login(props) {
   const [usertype, setusertype] = useState("Log in");
@@ -158,7 +158,7 @@ function Login(props) {
 
             </>
             {
-              reset ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" onClick={()=>handleforget()}>Change password</button></div> : usertype === "Log in" ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Log in</button></div> : <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Sign up</button></div>
+              reset ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='button' onClick={()=>handleforget()}>Change password</button></div> : usertype === "Log in" ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Log in</button></div> : <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Sign up</button></div>
             }
            <>
            {
