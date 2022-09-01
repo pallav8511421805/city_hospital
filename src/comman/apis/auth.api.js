@@ -6,6 +6,7 @@ import {
   signOut,
   GoogleAuthProvider,
   signInWithPopup,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "../../Firebase";
 
@@ -92,5 +93,19 @@ export const signingoogleapi = ()=>{
     const credential = GoogleAuthProvider.credentialFromError(error);
     reject({ payload : errorCode})
   });
+  })
+}
+
+export const Forgetpasswordapi = () =>{
+  return new Promise ((resolve,reject)=>{
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        resolve({payload: 'Please check your email and click on link for reset password.'})
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        reject({ payload: "Errorcode : " + errorCode });
+      });
   })
 }
