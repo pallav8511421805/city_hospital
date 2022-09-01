@@ -95,17 +95,3 @@ export const signingoogleapi = ()=>{
   });
   })
 }
-
-export const Forgetpasswordapi = () =>{
-  return new Promise ((resolve,reject)=>{
-    sendPasswordResetEmail(auth, values.email)
-      .then(() => {
-        resolve({payload: 'Please check your email.'})
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        reject({ payload: "Errorcode : " + errorCode });
-      });
-  })
-}

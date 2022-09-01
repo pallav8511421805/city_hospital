@@ -19,10 +19,6 @@ export const Logoutedaction = () => (dispatch) => {
   dispatch({ type: ActionTypes.LOGOUTED });
 };
 
-export const signingoogle =(values) => (dispatch)=>{
-  dispatch({type:ActionTypes.SIGN_INGOOGLE,payload:values})
-}
-
-export const Forgetpassword =() => (dispatch)=>{
-  dispatch({type:ActionTypes.FORGET})
+export const signingoogle =() => (dispatch)=>{
+  dispatch({type:ActionTypes.SIGN_INGOOGLE})
 }

@@ -1,8 +1,8 @@
 import { call, takeEvery, all, put } from "redux-saga/effects";
-import { Forgetpasswordapi, signInapi, signingoogleapi, signoutapi, signUpapi } from "../../comman/apis/auth.api";
+import {signInapi, signingoogleapi, signoutapi, signUpapi } from "../../comman/apis/auth.api";
 import { historydata } from "../../History/history";
 import { setalertaction } from "../actions/alert.action";
-import {Forgetpassword, Logoutedaction, signedinaction, signingoogle} from "../actions/signup.action";
+import {Logoutedaction, signedinaction} from "../actions/signup.action";
 import * as ActionTypes from "../actiontypes";
 
 function* signUp(action) {
@@ -40,19 +40,9 @@ function* signout() {
 function* signGoogle(){
   try {
     const user = yield call(signingoogleapi);
-    yield put(signingoogle(user.payload));
+    yield put(signedinaction(user.payload));
     historydata.push("/H");
     yield put(setalertaction({ text: "Login successfully.", color: "success" }));
-  } catch (e) {
-    yield put(setalertaction({ text: e.payload, color: "error" }));
-  }
-}
-
-function* Forgetsaga(){
-  try {
-    const user = yield call(Forgetpasswordapi);
-    yield put(Forgetpassword());
-    yield put(setalertaction({ text: user.payload, color: "success" }));
   } catch (e) {
     yield put(setalertaction({ text: e.payload, color: "error" }));
   }
@@ -71,9 +61,6 @@ function* WatchSignout() {
 function* WatchSignGoogle() {
   yield takeEvery(ActionTypes.SIGN_INGOOGLE, signGoogle);
 }
-function* Watchforget() {
-  yield takeEvery(ActionTypes.FORGET, Forgetsaga);
-}
 export default function* authSaga() {
-  yield all([WatchSignUp(), WatchSignin(), WatchSignout(),WatchSignGoogle(),Watchforget()]);
+  yield all([WatchSignUp(), WatchSignin(), WatchSignout(),WatchSignGoogle()]);
 }
