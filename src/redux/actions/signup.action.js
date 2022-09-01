@@ -18,3 +18,7 @@ export const Logoutaction = () => (dispatch) => {
 export const Logoutedaction = () => (dispatch) => {
   dispatch({ type: ActionTypes.LOGOUTED });
 };
+
+export const signingoogle =() => (dispatch)=>{
+  dispatch({type:ActionTypes.SIGN_INGOOGLE})
+}

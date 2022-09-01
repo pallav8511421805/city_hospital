@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as yup from 'yup';
 import {Form, Formik, useFormik} from 'formik';
 import { useDispatch } from 'react-redux';
-import { signinaction, signupaction } from '../redux/actions/signup.action';
+import { signinaction, signingoogle, signupaction } from '../redux/actions/signup.action';
 
 function Login(props) {
   const [usertype, setusertype] = useState("Log in");
@@ -61,7 +61,9 @@ function Login(props) {
     }
     )
     let {errors,handleBlur,handleSubmit,touched,values ,handleChange} = formik;
-  
+    const handlegoogle =() =>{
+     dispatch(signingoogle())
+    }
   return (
     <div className="container">
       <div className="section-title">
@@ -151,22 +153,26 @@ function Login(props) {
                     : null
               }
 
-              {
+            </>
+            {
+              reset ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0">Change password</button></div> : usertype === "Log in" ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Log in</button></div> : <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Sign up</button></div>
+            }
+           <>
+           {
+              usertype === 'Log in' && reset === false ? <div className='text-center my-3'><button className='appointment-btn scrollto border-0' onClick={()=>handlegoogle()} type="button">Sign in With Google</button></div> : null
+            }
+             {
                 reset ? null : usertype === "Log in" ? <div className="text-center my-3">
                   <button className="appointment-btn scrollto border-0 ms-0" onClick={() => {
                     setreset(true);
                   }}>Forgot password ?</button></div> : null
               }
-
-            </>
-            {
-              reset ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0">Change password</button></div> : usertype === "Log in" ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Log in</button></div> : <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Sign up</button></div>
-            }
+           </>
             <div className="text-center">
               {
                 reset ? null : usertype === "Log in" ?
                   <p>Create a new account <span>
-                    <a className="appointment-btn scrollto border-0 ms-0" onClick={() => { setusertype("Sign up"); setreset(false) }}>Log in</a>
+                      <a className="appointment-btn scrollto border-0 ms-0" onClick={() => { setusertype("Sign up"); setreset(false) }}>Log in</a>
                   </span>
                   </p>
                   : <p>Already have an account? <span>
