@@ -4,6 +4,7 @@ export const SIGNED_IN = "SIGNED_IN";
 export const LOGOUT = "LOGOUT";
 export const LOGOUTED = "LOGOUTED";
 export const SIGN_INGOOGLE = "SIGN_INGOOGLE";
+export const FORGET = "FORGET";
 
 export const SETALERT = "SETALERT";
 export const RESETALERT = "RESETALERT";
