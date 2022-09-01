@@ -14,7 +14,7 @@ export const authreducer = (state = initval, action) => {
         user: action.payload,
         error: "",
       };
-      case ActionTypes.LOGOUT:
+      case ActionTypes.LOGOUTED:
         return {
           ...state,
           isload: false,

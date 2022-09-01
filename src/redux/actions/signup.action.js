@@ -15,3 +15,6 @@ export const signedinaction = (values) => (dispatch) => {
 export const Logoutaction = () => (dispatch) => {
   dispatch({ type: ActionTypes.LOGOUT });
 };
+export const Logoutedaction = () => (dispatch) => {
+  dispatch({ type: ActionTypes.LOGOUTED });
+};
