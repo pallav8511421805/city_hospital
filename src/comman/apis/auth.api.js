@@ -84,7 +84,7 @@ return new Promise((resolve,reject)=>{
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
-    resolve({ payload: user });
+    resolve({ payload: "Log in successfully." });
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
