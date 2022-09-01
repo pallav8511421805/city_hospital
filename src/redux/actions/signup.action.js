@@ -23,6 +23,6 @@ export const signingoogle =(values) => (dispatch)=>{
   dispatch({type:ActionTypes.SIGN_INGOOGLE,payload:values})
 }
 
-export const Forgetpassword =(values) => (dispatch)=>{
-  dispatch({type:ActionTypes.FORGET,payload:values})
+export const Forgetpassword =() => (dispatch)=>{
+  dispatch({type:ActionTypes.FORGET})
 }

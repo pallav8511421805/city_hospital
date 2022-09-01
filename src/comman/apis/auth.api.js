@@ -96,7 +96,7 @@ export const signingoogleapi = ()=>{
   })
 }
 
-export const Forgetpasswordapi = (values) =>{
+export const Forgetpasswordapi = () =>{
   return new Promise ((resolve,reject)=>{
     sendPasswordResetEmail(auth, values.email)
       .then(() => {
