@@ -1,5 +1,5 @@
 import { call, takeEvery, all, put } from "redux-saga/effects";
-import { signInapi, signingoogleapi, signInGoolgeapi, signoutapi, signUpapi } from "../../comman/apis/auth.api";
+import { signInapi, signingoogleapi, signoutapi, signUpapi } from "../../comman/apis/auth.api";
 import { historydata } from "../../History/history";
 import { setalertaction } from "../actions/alert.action";
 import {Logoutedaction, signedinaction} from "../actions/signup.action";
