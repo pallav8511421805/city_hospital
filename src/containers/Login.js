@@ -62,7 +62,8 @@ function Login(props) {
     )
     let {errors,handleBlur,handleSubmit,touched,values ,handleChange} = formik;
     const handlegoogle =() =>{
-     dispatch(signingoogle())
+    //  dispatch(signingoogle())
+    console.log('Google');
     }
   return (
     <div className="container">

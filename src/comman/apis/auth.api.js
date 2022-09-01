@@ -76,21 +76,21 @@ export const signoutapi = () => {
   });
 };
 
-export const signInGoolgeapi = () =>{
-return new Promise((resolve,reject)=>{
-  const provider = new GoogleAuthProvider();
-  signInWithPopup(auth, provider)
-  .then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
-    resolve({ payload: "Log in successfully." });
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    reject({ payload: "Errorcode : " + error.code });
-  });
-})
-}
+// export const signInGoolgeapi = () =>{
+// return new Promise((resolve,reject)=>{
+//   const provider = new GoogleAuthProvider();
+//   signInWithPopup(auth, provider)
+//   .then((result) => {
+//     const credential = GoogleAuthProvider.credentialFromResult(result);
+//     const token = credential.accessToken;
+//     const user = result.user;
+//     resolve({ payload: "Log in successfully." });
+//   }).catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     const email = error.customData.email;
+//     const credential = GoogleAuthProvider.credentialFromError(error);
+//     reject({ payload: "Errorcode : " + error.code });
+//   });
+// })
+// }

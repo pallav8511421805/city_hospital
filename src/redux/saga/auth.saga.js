@@ -37,18 +37,18 @@ function* signout() {
   }
 }
 
-function* signGoogle(){
-  try{
-    const user = yield call(signInGoolgeapi);
-    yield put(signingoogle());
-    yield put(
-      setalertaction({ text: "Login successfully.", color: "success" })
-    );
-    historydata.push("/H");
-  } catch (e) {
-    yield put(setalertaction({ text: e.payload, color: "error" }));
-  }
-}
+// function* signGoogle(){
+//   try{
+//     const user = yield call(signInGoolgeapi);
+//     yield put(signingoogle());
+//     yield put(
+//       setalertaction({ text: "Login successfully.", color: "success" })
+//     );
+//     historydata.push("/H");
+//   } catch (e) {
+//     yield put(setalertaction({ text: e.payload, color: "error" }));
+//   }
+// }
 
 function* WatchSignUp() {
   yield takeEvery(ActionTypes.SIGN_UP, signUp);
@@ -60,9 +60,9 @@ function* WatchSignin() {
 function* WatchSignout() {
   yield takeEvery(ActionTypes.LOGOUT, signout);
 }
-function* WatchSignGoogle() {
-  yield takeEvery(ActionTypes.SIGN_INGOOGLE, signGoogle);
-}
+// function* WatchSignGoogle() {
+//   yield takeEvery(ActionTypes.SIGN_INGOOGLE, signGoogle);
+// }
 export default function* authSaga() {
-  yield all([WatchSignUp(), WatchSignin(), WatchSignout(),WatchSignGoogle()]);
+  yield all([WatchSignUp(), WatchSignin(), WatchSignout()]);
 }
