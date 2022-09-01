@@ -1,8 +1,8 @@
 import { call, takeEvery, all, put } from "redux-saga/effects";
-import { signInapi, signInGoolgeapi, signoutapi, signUpapi } from "../../comman/apis/auth.api";
+import { signInapi, signingoogleapi, signInGoolgeapi, signoutapi, signUpapi } from "../../comman/apis/auth.api";
 import { historydata } from "../../History/history";
 import { setalertaction } from "../actions/alert.action";
-import {Logoutedaction, signedinaction, signingoogle } from "../actions/signup.action";
+import {Logoutedaction, signedinaction} from "../actions/signup.action";
 import * as ActionTypes from "../actiontypes";
 
 function* signUp(action) {
@@ -39,7 +39,7 @@ function* signout() {
 
 function* signGoogle(){
   try {
-    const user = yield call(signingoogle);
+    const user = yield call(signingoogleapi);
     yield put(signedinaction(user.payload));
     historydata.push("/H");
     yield put(setalertaction({ text: "Login successfully.", color: "success" }));
