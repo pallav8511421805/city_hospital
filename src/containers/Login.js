@@ -65,7 +65,7 @@ function Login(props) {
      dispatch(signingoogle())
     }
     const handleforget = () =>{
-      dispatch(Forgetpassword())
+      console.log('password forget');
     }
   return (
     <div className="container">
