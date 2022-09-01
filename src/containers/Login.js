@@ -63,7 +63,9 @@ function Login(props) {
     let {errors,handleBlur,handleSubmit,touched,values ,handleChange} = formik;
     const handlegoogle =() =>{
      dispatch(signingoogle())
-    console.log('Google');
+    }
+    const handleforget = () =>{
+      dispatch(Forgetpassword())
     }
   return (
     <div className="container">
@@ -156,7 +158,7 @@ function Login(props) {
 
             </>
             {
-              reset ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0">Change password</button></div> : usertype === "Log in" ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Log in</button></div> : <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Sign up</button></div>
+              reset ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" onClick={()=>handleforget()}>Change password</button></div> : usertype === "Log in" ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Log in</button></div> : <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Sign up</button></div>
             }
            <>
            {
