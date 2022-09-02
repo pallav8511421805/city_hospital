@@ -53,7 +53,10 @@ function Login(props) {
         if(usertype === "Log in"){
           // handlelogin(values);
           dispatch(signinaction(values))
-        } else{
+        }else if(reset){
+           handleforget(values)
+        }
+        else{
           // alert(JSON.stringify(values, null, 2));
           dispatch(signupaction(values))
         }
@@ -64,8 +67,9 @@ function Login(props) {
     const handlegoogle =() =>{
      dispatch(signingoogle())
     }
-    const handleforget = () =>{
-      console.log('password forget');
+    const handleforget = (values) =>{
+      console.log(values);
+      // dispatch(forgetpasswordaction())
     }
   return (
     <div className="container">
@@ -158,7 +162,7 @@ function Login(props) {
 
             </>
             {
-              reset ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='button' onClick={()=>handleforget()}>Change password</button></div> : usertype === "Log in" ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Log in</button></div> : <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Sign up</button></div>
+              reset ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit' >Change password</button></div> : usertype === "Log in" ? <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Log in</button></div> : <div className="text-center my-3"><button className="appointment-btn scrollto border-0" type='submit'>Sign up</button></div>
             }
            <>
            {
