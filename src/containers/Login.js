@@ -3,7 +3,7 @@ import * as yup from 'yup'
 import { Form, Formik, useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
 import {
-  Forgetpassword,
+  forgetpasswordaction,
   signinaction,
   signingoogle,
   signupaction,
