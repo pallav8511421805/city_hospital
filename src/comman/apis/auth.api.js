@@ -104,7 +104,9 @@ export const forgetapi = (values) => {
         resolve({ payload: 'Please check your email' })
       })
       .catch((error) => {
-        reject({ payload: error.code })
+        const errorCode = error.code
+        const errorMessage = error.message
+        reject({ payload: errorCode })
       })
   })
 }
