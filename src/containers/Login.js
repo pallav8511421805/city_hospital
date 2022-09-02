@@ -70,7 +70,7 @@ function Login(props) {
         // alert(JSON.stringify(values, null, 2));
         dispatch(signupaction(values))
       } else {
-        dispatch(forgetpasswordaction())
+        dispatch(forgetpasswordaction(values))
       }
     },
   })
