@@ -56,10 +56,10 @@ function* signGoogle() {
   }
 }
 
-function* forgetpasswordsaga() {
+function* forgetpasswordsaga(action) {
   try {
-    const user = yield call(forgetapi)
-    yield put(forgetpasswordaction())
+    const user = yield call(forgetapi, action.payload)
+    historydata.push('/H')
     yield put(setalertaction({ text: user.payload, color: 'success' }))
   } catch (e) {
     yield put(setalertaction({ text: e.payload, color: 'error' }))

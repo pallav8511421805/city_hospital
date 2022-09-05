@@ -66,11 +66,11 @@ function Login(props) {
       if (usertype === 'Log in') {
         // handlelogin(values);
         dispatch(signinaction(values))
-      } else if (usertype === 'Sign up') {
+      } else if (reset === true) {
         // alert(JSON.stringify(values, null, 2));
-        dispatch(signupaction(values))
-      } else {
         dispatch(forgetpasswordaction(values))
+      } else {
+        dispatch(signupaction(values))
       }
     },
   })

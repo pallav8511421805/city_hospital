@@ -98,6 +98,7 @@ export const signingoogleapi = () => {
 }
 
 export const forgetapi = (values) => {
+  console.log(values)
   return new Promise((resolve, reject) => {
     sendPasswordResetEmail(auth, values.email)
       .then(() => {
