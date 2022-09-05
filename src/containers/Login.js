@@ -16,7 +16,7 @@ function Login(props) {
 
   let initialVal
   let mainschema
-  if (usertype == 'Log in') {
+  if (usertype == 'Log in' && reset === false) {
     initialVal = {
       password: '',
       email: '',
@@ -28,7 +28,7 @@ function Login(props) {
         .required('Please enter your email id.'),
       password: yup.string().required('Please enter your password.'),
     })
-  } else if (usertype == 'Sign up') {
+  } else if (usertype == 'Sign up' && reset === false) {
     initialVal = {
       name: '',
       password: '',
