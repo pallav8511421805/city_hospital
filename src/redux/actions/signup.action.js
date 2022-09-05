@@ -24,6 +24,5 @@ export const signingoogle = () => (dispatch) => {
 }
 
 export const forgetpasswordaction = (values) => (dispatch) => {
-  console.log(values)
   dispatch({ type: ActionTypes.FORGET, payload: values })
 }

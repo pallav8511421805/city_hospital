@@ -53,7 +53,10 @@ function Login(props) {
         .required('Please enter your email id.'),
     })
   }
-
+  const HandlePassword = (values) => {
+    console.log(values)
+    dispatch(forgetpasswordaction(values))
+  }
   let schema = mainschema
 
   const handlelogin = (values) => {
@@ -70,7 +73,7 @@ function Login(props) {
         // alert(JSON.stringify(values, null, 2));
         dispatch(forgetpasswordaction(values))
       } else {
-        dispatch(signupaction(values))
+        dispatch(HandlePassword(values))
       }
     },
   })
