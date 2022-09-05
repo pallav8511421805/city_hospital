@@ -71,9 +71,9 @@ function Login(props) {
         dispatch(signinaction(values))
       } else if (reset === true) {
         // alert(JSON.stringify(values, null, 2));
-        dispatch(forgetpasswordaction(values))
-      } else {
         dispatch(HandlePassword(values))
+      } else {
+        dispatch(signupaction(values))
       }
     },
   })
