@@ -16,7 +16,7 @@ function Login(props) {
 
   let initialVal
   let mainschema
-  if (usertype == 'Log in' && reset === false) {
+  if (usertype == 'Log in') {
     initialVal = {
       password: '',
       email: '',
@@ -28,7 +28,7 @@ function Login(props) {
         .required('Please enter your email id.'),
       password: yup.string().required('Please enter your password.'),
     })
-  } else if (usertype == 'Sign up' && reset === false) {
+  } else if (usertype == 'Sign up') {
     initialVal = {
       name: '',
       password: '',
@@ -66,13 +66,13 @@ function Login(props) {
     initialValues: initialVal,
     validationSchema: schema,
     onSubmit: (values) => {
-      if (usertype === 'Log in') {
+      if (usertype === 'Log in' && !reset) {
         // handlelogin(values);
         dispatch(signinaction(values))
-      } else if (reset === true) {
+      } else if (reset) {
         // alert(JSON.stringify(values, null, 2));
         dispatch(HandlePassword(values))
-      } else {
+      } else if (usertype === 'Sign up' && !reset) {
         dispatch(signupaction(values))
       }
     },
